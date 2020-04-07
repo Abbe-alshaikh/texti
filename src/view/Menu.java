@@ -1,10 +1,12 @@
-package View;
+package view;
+
+import controller.Controller;
 
 import javax.swing.*;
 import java.awt.event.*;
 
 public class Menu extends JFrame{
-   private Controller.controller contr;
+   private Controller contr;
     private JMenuBar menuBar;
     private JMenu menu, submenu;
     private JMenuItem menuItem;
@@ -14,7 +16,7 @@ public class Menu extends JFrame{
     private JMenuItem newItem, openItem, saveItem, exitItem, fontItem;
 
 
-    public Menu(Controller.controller contr){
+    public Menu(Controller contr){
       this.contr=contr;
       render();
     }
@@ -33,14 +35,20 @@ public class Menu extends JFrame{
         menu.getAccessibleContext().setAccessibleDescription(
                 "The only menu in this program that has menu items");
         edit = new JMenu("Edit ");
-        view= new JMenu("View ");
+        view= new JMenu("view ");
         menuBar.add(menu);
         menuBar.add(edit);
         menuBar.add(view);
 
         //add items to File scroll-down menu
-        newItem = new JMenuItem("New");
-        menu.add(newItem);
+        JMenuItem newItem0 = new JMenuItem("New");
+        JMenuItem newItem1 = new JMenuItem("Open");
+        JMenuItem newItem2 = new JMenuItem("Save");
+        JMenuItem newItem3 = new JMenuItem("Save As..");
+        menu.add(newItem0);
+        menu.add(newItem1);
+        menu.add(newItem2);
+        menu.add(newItem3);
 
       /*  menuBar = new JMenuBar();
         fileMenu = new JMenu(" File ");

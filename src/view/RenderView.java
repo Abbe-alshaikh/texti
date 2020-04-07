@@ -1,12 +1,14 @@
-package View;
+package view;
 
+
+import controller.Controller;
 
 import javax.swing.*;
 public class RenderView extends JFrame{
     //JTextArea textArea = new JTextArea(1000,900);
     private int width = 1200, height = 900;
     //private JScrollPane scrollbar = new JScrollPane(textArea);
-    public RenderView(Controller.controller contr){
+    public RenderView(Controller contr){
 
        Menu menu = new Menu(contr);
       userInterface(menu);
