@@ -13,7 +13,7 @@ public class Menu extends JFrame{
     private JRadioButtonMenuItem rbMenuItem;
     private JCheckBoxMenuItem cbMenuItem;
     private JMenu file, view, toolWindow, edit, insert, formatting, help, print, alignment, lists;
-    private JMenuItem newItem, openItem, saveItem,saveAsItem,undo, redo, cut, copy, paste, spell_check,
+    JMenuItem newItem, openItem, saveItem,saveAsItem,undo, redo, cut, copy, paste, spell_check,
             editWindow, fontWindow, picture, table, doBold, cursive, size_of_letters, underline,
             highlighting, left, center, right, bullet_points, enumeration, fonts ;
 

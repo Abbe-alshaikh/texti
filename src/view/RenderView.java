@@ -22,7 +22,7 @@ public class RenderView extends JFrame implements ActionListener {
     private void userInterface(Menu menu){
 
         mb = menu.getMB();
-        menu.newItem0.addActionListener(this);
+        menu.newItem.addActionListener(this);
         menu.doBold.addActionListener(this);
         this.setTitle("Texti - the worlds best word processor!");
         //this.iconImage
