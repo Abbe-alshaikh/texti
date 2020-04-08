@@ -1,13 +1,14 @@
 package startup;
 
-import controller.Controller;
+import controller.TextiController;
 
 import view.*;
 public class Startup {
     public static void main(String args[]){
-      Controller contr = new Controller();
+      TextiController contr = new TextiController();
       RenderView rv = new RenderView(contr);
-      rv.setVisible(true);
+      //rv.setVisible(true);
 
     }
 }
+

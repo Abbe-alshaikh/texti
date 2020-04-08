@@ -1,21 +1,22 @@
 package view;
 
-import controller.Controller;
+
+import controller.TextiController;
 
 import javax.swing.*;
 import java.awt.event.*;
 
 public class Menu extends JFrame{
-   private Controller contr;
+   private TextiController contr;
     private JMenuBar menuBar;
     private JMenuItem menuItem;
     private JRadioButtonMenuItem rbMenuItem;
     private JCheckBoxMenuItem cbMenuItem;
     //private JMenu view, toolWindow;
-    //private JMenuItem newItem, openItem, saveItem, exitItem, fontItem;
+    private JMenuItem newItem, openItem, saveItem, exitItem, fontItem;
+    JMenuItem newItem0, newItem1, doBold;
 
-
-    public Menu(Controller contr){
+    public Menu(TextiController contr){
       this.contr=contr;
       render();
     }
@@ -40,8 +41,8 @@ public class Menu extends JFrame{
         menuBar.add(view);
 
         //add items to File scroll-down menu
-        JMenuItem newItem0 = new JMenuItem("New");
-        JMenuItem newItem1 = new JMenuItem("Open");
+        newItem0 = new JMenuItem("New");
+        newItem1 = new JMenuItem("Open");
         JMenuItem newItem2 = new JMenuItem("Save");
         JMenuItem newItem3 = new JMenuItem("Save As..");
         file.add(newItem0);
@@ -54,11 +55,13 @@ public class Menu extends JFrame{
         JMenuItem cut = new JMenuItem("Cut");
         JMenuItem copy = new JMenuItem("Copy");
         JMenuItem paste = new JMenuItem("Paste");
+                 doBold = new JMenuItem("Bold");
         edit.add(undo);
         edit.add(redo);
         edit.add(cut);
         edit.add(copy);
         edit.add(paste);
+        edit.add(doBold);
 
         JMenuItem editWindow = new JMenuItem("Edit Window");
         JMenuItem fontWindow = new JMenuItem("Font Window");
