@@ -26,6 +26,7 @@ public class RenderView extends JFrame implements ActionListener {
         menu.doBold.addActionListener(this);
         menu.saveItem.addActionListener(this);
         menu.openItem.addActionListener(this);
+        menu.cursive.addActionListener(this);
         this.setTitle("Texti - the worlds best word processor!");
         //this.iconImage
         this.setSize(width, height);
@@ -50,17 +51,7 @@ public class RenderView extends JFrame implements ActionListener {
              this.show();*/
              ta = newTA();
         }else if(action.equals("Bold")){
-           if (ta.getFont().getStyle() == 1){ //bold = 1
-             //  plain = new Font(ta.getFont().getName(), Font.PLAIN, ta.getFont().getSize());
-              // ta.setFont(plain);
-               contr.doPlain(ta);
-           }else {
-               //normal: javax.swing.plaf.FontUIResource[family=Dialog,name=Dialog,style=plain,size=12]
-              // bold = new Font(ta.getFont().getName(), Font.BOLD, ta.getFont().getSize());
-              // ta.setFont(bold);
-               contr.doBold(ta);
-               //Bold: java.awt.Font[family=Dialog,name=Dialog,style=bold,size=12]
-           }
+         contr.bold(ta);
         }else if(action.equals("Save")) {
             contr.doSave(ta);
         }else if(action.equals("Open")) {
@@ -71,6 +62,8 @@ public class RenderView extends JFrame implements ActionListener {
             this.show();*/
             ta = newTA();
             contr.doOpen(ta);
+        }else if(action.equals("Cursive")){
+            contr.cursive(ta);
         }
 
     }
