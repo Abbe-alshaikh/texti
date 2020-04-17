@@ -24,6 +24,8 @@ public class RenderView extends JFrame implements ActionListener {
         mb = menu.getMB();
         menu.newItem.addActionListener(this);
         menu.doBold.addActionListener(this);
+        menu.saveItem.addActionListener(this);
+        menu.openItem.addActionListener(this);
         this.setTitle("Texti - the worlds best word processor!");
         //this.iconImage
         this.setSize(width, height);
@@ -41,11 +43,12 @@ public class RenderView extends JFrame implements ActionListener {
         String action = e.getActionCommand();
         System.out.println(action);
         if(action.equals("New")){
-            ta = contr.openNewFile();
+             /*ta = contr.openNewFile();
              scrollbar = new JScrollPane(ta);
              this.add(ta);
              ta.setText("");
-             this.show();
+             this.show();*/
+             ta = newTA();
         }else if(action.equals("Bold")){
            if (ta.getFont().getStyle() == 1){ //bold = 1
              //  plain = new Font(ta.getFont().getName(), Font.PLAIN, ta.getFont().getSize());
@@ -58,8 +61,26 @@ public class RenderView extends JFrame implements ActionListener {
                contr.doBold(ta);
                //Bold: java.awt.Font[family=Dialog,name=Dialog,style=bold,size=12]
            }
+        }else if(action.equals("Save")) {
+            contr.doSave(ta);
+        }else if(action.equals("Open")) {
+            /*ta = contr.openNewFile();
+            scrollbar = new JScrollPane(ta);
+            this.add(ta);
+            ta.setText("");
+            this.show();*/
+            ta = newTA();
+            contr.doOpen(ta);
         }
 
+    }
+    public JTextArea newTA(){
+        ta = contr.openNewFile();
+        scrollbar = new JScrollPane((ta));
+        this.add(ta);
+        ta.setText("");
+        this.show();
+        return ta;
     }
 
 }
