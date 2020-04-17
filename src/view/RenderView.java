@@ -58,6 +58,11 @@ public class RenderView extends JFrame implements ActionListener {
                contr.doBold(ta);
                //Bold: java.awt.Font[family=Dialog,name=Dialog,style=bold,size=12]
            }
+        }else if(action.equals("Cursive")){
+            contr.doCursive(ta);
+            if(ta.getFont().getStyle() == 2){
+
+            }
         }
 
     }
