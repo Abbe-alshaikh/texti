@@ -7,39 +7,56 @@ import java.awt.*;
 public class FontManagement {
 Font font = new Font(null);
     int mode=0;
-    public void doBold(JTextArea ta){
-        System.out.println("mode, dobold" + mode);
+    public void bold(JTextArea ta){
+        if (ta.getFont().getStyle() == Font.BOLD){ //bold = 1
+            //  plain = new Font(ta.getFont().getName(), Font.PLAIN, ta.getFont().getSize());
+            // ta.setFont(plain);
+            doPlain(ta);
+        }else if(ta.getFont().getStyle() == 3) {
+           doPlain(ta);
+        }else{
+            doBold(ta);
+        }
+    }
+
+    private void doBold(JTextArea ta){
 
         mode += Font.BOLD;
         font = new Font(ta.getFont().getName(), mode, ta.getFont().getSize());
         ta.setFont(font);
+        System.out.println("mode, dobold" + mode);
         
     }
     //bold = 1
-    //cusive = 2
+    //cursive = 2
     //bold + cursive = 3
 
-    public void doPlain( JTextArea ta){
-        System.out.println("mode, doplain" + mode);
+    private void doPlain( JTextArea ta){
+
         mode -= Font.BOLD;
-        font = new Font(ta.getFont().getName(), Font.PLAIN, ta.getFont().getSize());
+        font = new Font(ta.getFont().getName(), mode, ta.getFont().getSize());
         ta.setFont(font);
+        System.out.println("mode, doplain" + mode);
     }
     public void cursive(JTextArea ta){
-        if(ta.getFont().getStyle() == (Font.ITALIC)){
-            System.out.println("mode, ITALIC"+ mode);
+        if(ta.getFont().getStyle() == Font.ITALIC){
+
             mode -=Font.ITALIC;
             font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
+            ta.setFont(font);
+            System.out.println("mode, ITALIC"+ mode);
         }else if(ta.getFont().getStyle() == 3){
-            System.out.println("mode, italics else" + mode);
+
             mode -= Font.ITALIC;
             font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
             ta.setFont(font);
-        }else{
             System.out.println("mode, italics else" + mode);
+        }else{
+
             mode += Font.ITALIC;
             font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
             ta.setFont(font);
+            System.out.println("mode, italics else" + mode);
         }
     }
 }

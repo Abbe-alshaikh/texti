@@ -42,24 +42,13 @@ public class RenderView extends JFrame implements ActionListener {
     //}
     public void actionPerformed(ActionEvent e){
         String action = e.getActionCommand();
-        System.out.println(action);
         if(action.equals("New")){
-             /*ta = contr.openNewFile();
-             scrollbar = new JScrollPane(ta);
-             this.add(ta);
-             ta.setText("");
-             this.show();*/
              ta = newTA();
         }else if(action.equals("Bold")){
          contr.bold(ta);
         }else if(action.equals("Save")) {
             contr.doSave(ta);
         }else if(action.equals("Open")) {
-            /*ta = contr.openNewFile();
-            scrollbar = new JScrollPane(ta);
-            this.add(ta);
-            ta.setText("");
-            this.show();*/
             ta = newTA();
             contr.doOpen(ta);
         }else if(action.equals("Cursive")){

@@ -6,6 +6,10 @@ import java.io.*;
 
 
 public class OpenFile {
+    public JTextArea openNewFile(){
+        JTextArea textArea = new JTextArea(1000,900);
+        return textArea;
+    }
     public void doOpen(JTextArea ta){
 
 
