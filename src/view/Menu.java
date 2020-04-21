@@ -15,10 +15,8 @@ public class Menu extends JFrame{
     private JMenu file, view, toolWindow, edit, insert, formatting, help, print, alignment, lists, size_of_letters;
     JMenuItem newItem, openItem, saveItem,saveAsItem,undo, redo, cut, copy, paste, spell_check,
             editWindow, fontWindow, picture, table, doBold, cursive, underline,
-            highlighting, left, center, right, bullet_points, enumeration, fonts, s8, s10, s12, s14, s16, s18, s20;
-            editWindow, fontWindow, picture, table, doBold, cursive, size_of_letters, underline,
-            highlighting, left, center, right, bullet_points, enumeration, fonts, cantarell,
-            monospaced, sansserif, serif;
+            highlighting, left, center, right, bullet_points, enumeration, fonts, s8, s10, s12, s14, s16, s18, s20,
+            cantarell, monospaced, sansserif, serif;
 
     public Menu(TextiController contr){
       this.contr=contr;

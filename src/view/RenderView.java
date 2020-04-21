@@ -35,6 +35,12 @@ public class RenderView extends JFrame implements ActionListener {
         menu.s16.addActionListener(this);
         menu.s18.addActionListener(this);
         menu.s20.addActionListener(this);
+        //Fonts action Listeners:
+        menu.serif.addActionListener(this);
+        menu.cantarell.addActionListener(this);
+        menu.monospaced.addActionListener(this);
+        menu.sansserif.addActionListener(this);
+
         this.setTitle("Texti - the worlds best word processor!");
         //this.iconImage
         this.setSize(width, height);
@@ -42,18 +48,8 @@ public class RenderView extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // this.add(scrollbar);
         this.setJMenuBar(mb);
-        //add action listeners
-        menu.newItem.addActionListener(this);
-        menu.doBold.addActionListener(this);
-        menu.saveItem.addActionListener(this);
-        menu.openItem.addActionListener(this);
-        menu.cursive.addActionListener(this);
-        //Fonts action Listeners:
-        menu.serif.addActionListener(this);
-        menu.cantarell.addActionListener(this);
-        menu.monospaced.addActionListener(this);
-        menu.sansserif.addActionListener(this);
         this.show();
+
     }
 
     //void renderTV(tv){
