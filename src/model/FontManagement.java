@@ -63,4 +63,10 @@ Font font = new Font(null);
         font = new Font(ta.getFont().getName(),ta.getFont().getStyle(), sz );
         ta.setFont(font);
     }
+
+    //managing the different font-options
+    public void setFont(String fontname, JTextArea ta){
+        font = new Font(fontname, mode, ta.getFont().getSize());
+        ta.setFont(font);
+    }
 }

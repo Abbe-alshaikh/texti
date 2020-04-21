@@ -16,6 +16,9 @@ public class Menu extends JFrame{
     JMenuItem newItem, openItem, saveItem,saveAsItem,undo, redo, cut, copy, paste, spell_check,
             editWindow, fontWindow, picture, table, doBold, cursive, underline,
             highlighting, left, center, right, bullet_points, enumeration, fonts, s8, s10, s12, s14, s16, s18, s20;
+            editWindow, fontWindow, picture, table, doBold, cursive, size_of_letters, underline,
+            highlighting, left, center, right, bullet_points, enumeration, fonts, cantarell,
+            monospaced, sansserif, serif;
 
     public Menu(TextiController contr){
       this.contr=contr;
@@ -41,6 +44,7 @@ public class Menu extends JFrame{
         formatting = new JMenu("Text Formatting");
         help = new JMenu("Help");
         print = new JMenu("Print");
+        fonts = new JMenu("Fonts");
 
 
         menuBar.add(file);
@@ -50,7 +54,17 @@ public class Menu extends JFrame{
         menuBar.add(formatting);
         menuBar.add(help);
         menuBar.add(print);
+        menuBar.add(fonts);
 
+        //add font options to sckroll-down menu Fonts
+        serif = new JMenuItem("Serif");
+        monospaced = new JMenuItem("Monospaced");
+        sansserif = new JMenuItem("SansSerif");
+        cantarell = new JMenuItem("Cantarell");
+        fonts.add(serif);
+        fonts.add(monospaced);
+        fonts.add(sansserif);
+        fonts.add(cantarell);
 
         //add items to File scroll-down menu
         newItem = new JMenuItem("New");
