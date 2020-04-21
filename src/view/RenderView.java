@@ -58,59 +58,59 @@ public class RenderView extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e){
         String action = e.getActionCommand();
         if(action.equals("New")){
-             ta = newTA();
+             newTA();
         }else if(action.equals("Bold")){
-         contr.bold(ta);
+         contr.bold();
         }else if(action.equals("Save")) {
-            contr.doSave(ta);
+            contr.doSave();
         }else if(action.equals("Open")) {
-            ta = newTA();
-            contr.doOpen(ta);
+             newTA();
+            contr.doOpen();
         }else if(action.equals("Cursive")){
-            contr.cursive(ta);
+            contr.cursive();
         }else if(action.equals("Serif")){
             fName= "Serif".toString();
-            contr.setFont(fName, ta);
+            contr.setFont(fName);
         }else if(action.equals("Monospaced")){
             fName= "Monospaced".toString();
-            contr.setFont(fName, ta);
+            contr.setFont(fName);
         }else if(action.equals("SansSerif")){
              fName= "SansSerif".toString();
-            contr.setFont(fName, ta);
+            contr.setFont(fName);
         }else if(action.equals("Cantarell")){
             fName= "Cantarell".toString();
-            contr.setFont(fName, ta);
+            contr.setFont(fName);
         }
         else if(action.equals("8")){
-            contr.setSize(8,ta);
+            contr.setSize(8);
         }
         else if(action.equals("10")){
-            contr.setSize(10,ta);
+            contr.setSize(10);
         }
         else if(action.equals("12")){
-            contr.setSize(12,ta);
+            contr.setSize(12);
         }
         else if(action.equals("14")){
-            contr.setSize(14,ta);
+            contr.setSize(14);
         }
         else if(action.equals("16")){
-            contr.setSize(16,ta);
+            contr.setSize(16);
         }
         else if(action.equals("18")){
-            contr.setSize(18,ta);
+            contr.setSize(18);
         }
         else if(action.equals("20")){
-            contr.setSize(20,ta);
+            contr.setSize(20);
         }
 
     }
-    public JTextPane newTA(){
+    public void newTA(){
         ta = contr.openNewFile();
         scrollbar = new JScrollPane((ta));
         this.add(ta);
         ta.setText("");
         this.show();
-        return ta;
+
     }
 
 }
