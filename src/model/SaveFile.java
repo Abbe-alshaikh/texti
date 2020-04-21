@@ -5,7 +5,7 @@ import java.io.*;
 
 public class SaveFile {
 
-    public void doSave(JTextArea ta) {
+    public void doSave(JTextPane ta) {
         // Create an object of JFileChooser class
         JFileChooser j = new JFileChooser("f:");
 

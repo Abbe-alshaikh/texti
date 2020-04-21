@@ -7,7 +7,7 @@ import java.awt.*;
 public class FontManagement {
 Font font = new Font(null);
     int mode=0;
-    public void bold(JTextArea ta){
+    public void bold(JTextPane ta){
         if (ta.getFont().getStyle() == Font.BOLD){ //bold = 1
             //  plain = new Font(ta.getFont().getName(), Font.PLAIN, ta.getFont().getSize());
             // ta.setFont(plain);
@@ -19,7 +19,7 @@ Font font = new Font(null);
         }
     }
 
-    private void doBold(JTextArea ta){
+    private void doBold(JTextPane ta){
 
         mode += Font.BOLD;
         font = new Font(ta.getFont().getName(), mode, ta.getFont().getSize());
@@ -31,14 +31,14 @@ Font font = new Font(null);
     //cursive = 2
     //bold + cursive = 3
 
-    private void doPlain( JTextArea ta){
+    private void doPlain( JTextPane ta){
 
         mode -= Font.BOLD;
         font = new Font(ta.getFont().getName(), mode, ta.getFont().getSize());
         ta.setFont(font);
         System.out.println("mode, doplain" + mode);
     }
-    public void cursive(JTextArea ta){
+    public void cursive(JTextPane ta){
         if(ta.getFont().getStyle() == Font.ITALIC){
 
             mode -=Font.ITALIC;
@@ -59,13 +59,13 @@ Font font = new Font(null);
             System.out.println("mode, italics else" + mode);
         }
     }
-    public void size(int sz, JTextArea ta){
+    public void size(int sz, JTextPane ta){
         font = new Font(ta.getFont().getName(),ta.getFont().getStyle(), sz );
         ta.setFont(font);
     }
 
     //managing the different font-options
-    public void setFont(String fontname, JTextArea ta){
+    public void setFont(String fontname, JTextPane ta){
         font = new Font(fontname, mode, ta.getFont().getSize());
         ta.setFont(font);
     }

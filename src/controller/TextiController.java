@@ -4,37 +4,37 @@ import java.awt.*;
 import model.*;
 
 public class TextiController extends JFrame {
-    JTextArea textArea;
+    JTextPane textArea;
     OpenFile o = new OpenFile();
     FontManagement fontm= new FontManagement();
     //vi flyttar skapandet av ta till modellen och det returneras här tbx till vyn
-    public JTextArea openNewFile(){
+    public JTextPane openNewFile(){
         textArea = o.openNewFile();
         return textArea;
     }
 
-    public void bold(JTextArea ta){
+    public void bold(JTextPane ta){
         fontm.bold(ta);
     }
-    public void cursive(JTextArea ta){
+    public void cursive(JTextPane ta){
 
         fontm.cursive(ta);
     }
     //controlling fonts
-    public void setFont(String font, JTextArea ta){
+    public void setFont(String font, JTextPane ta){
         fontm.setFont(font, ta);
     }
 
 
-    public void doSave(JTextArea ta){
+    public void doSave(JTextPane ta){
         SaveFile sf = new SaveFile();
         sf.doSave(ta);
     }
-    public void doOpen(JTextArea ta){
+    public void doOpen(JTextPane ta){
         o.doOpen(ta);
     }
 
-    public void setSize(int size, JTextArea ta){
+    public void setSize(int size, JTextPane ta){
         fontm.size(size, ta);
     }
 

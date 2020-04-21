@@ -11,7 +11,7 @@ public class RenderView extends JFrame implements ActionListener {
     private JMenuBar mb;
     private String fName;
     TextiController contr;
-    JTextArea ta;
+    JTextPane ta;
     Font bold, plain;
     public RenderView(TextiController contr){
         this.contr=contr;
@@ -104,7 +104,7 @@ public class RenderView extends JFrame implements ActionListener {
         }
 
     }
-    public JTextArea newTA(){
+    public JTextPane newTA(){
         ta = contr.openNewFile();
         scrollbar = new JScrollPane((ta));
         this.add(ta);

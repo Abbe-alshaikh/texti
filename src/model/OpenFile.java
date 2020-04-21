@@ -6,11 +6,11 @@ import java.io.*;
 
 
 public class OpenFile {
-    public JTextArea openNewFile(){
-        JTextArea textArea = new JTextArea(1000,900);
+    public JTextPane openNewFile(){
+        JTextPane textArea = new JTextPane();
         return textArea;
     }
-    public void doOpen(JTextArea ta){
+    public void doOpen(JTextPane ta){
 
 
         // Create an object of JFileChooser class
