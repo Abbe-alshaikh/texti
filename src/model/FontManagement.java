@@ -59,4 +59,8 @@ Font font = new Font(null);
             System.out.println("mode, italics else" + mode);
         }
     }
+    public void size(int sz, JTextArea ta){
+        font = new Font(ta.getFont().getName(),ta.getFont().getStyle(), sz );
+        ta.setFont(font);
+    }
 }

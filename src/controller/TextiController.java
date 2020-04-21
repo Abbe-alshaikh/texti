@@ -30,4 +30,8 @@ public class TextiController extends JFrame {
         o.doOpen(ta);
     }
 
+    public void setSize(int size, JTextArea ta){
+        fontm.size(size, ta);
+    }
+
 }

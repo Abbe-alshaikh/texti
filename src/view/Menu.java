@@ -12,10 +12,10 @@ public class Menu extends JFrame{
     private JMenuItem menuItem;
     private JRadioButtonMenuItem rbMenuItem;
     private JCheckBoxMenuItem cbMenuItem;
-    private JMenu file, view, toolWindow, edit, insert, formatting, help, print, alignment, lists;
+    private JMenu file, view, toolWindow, edit, insert, formatting, help, print, alignment, lists, size_of_letters;
     JMenuItem newItem, openItem, saveItem,saveAsItem,undo, redo, cut, copy, paste, spell_check,
-            editWindow, fontWindow, picture, table, doBold, cursive, size_of_letters, underline,
-            highlighting, left, center, right, bullet_points, enumeration, fonts ;
+            editWindow, fontWindow, picture, table, doBold, cursive, underline,
+            highlighting, left, center, right, bullet_points, enumeration, fonts, s8, s10, s12, s14, s16, s18, s20;
 
     public Menu(TextiController contr){
       this.contr=contr;
@@ -93,8 +93,24 @@ public class Menu extends JFrame{
         cursive = new JMenuItem("Cursive");
         formatting.add(cursive);
 
-        size_of_letters = new JMenuItem("Size");
+        size_of_letters = new JMenu("Size");
         formatting.add(size_of_letters);
+         s8 = new JMenuItem("8");
+        s10 = new JMenuItem("10");
+        s12 = new JMenuItem("12");
+        s14 = new JMenuItem("14");
+        s16 = new JMenuItem("16");
+        s18 = new JMenuItem("18");
+        s20 = new JMenuItem("20");
+        size_of_letters.add(s8);
+        size_of_letters.add(s10);
+        size_of_letters.add(s12);
+        size_of_letters.add(s14);
+        size_of_letters.add(s16);
+        size_of_letters.add(s18);
+        size_of_letters.add(s20);
+
+
 
         underline = new JMenuItem("Underline");
         formatting.add(underline);
