@@ -20,6 +20,10 @@ public class TextiController extends JFrame {
 
         fontm.cursive(ta);
     }
+    //controlling fonts
+    public void setFont(String font, JTextArea ta){
+        fontm.setFont(font, ta);
+    }
 
 
     public void doSave(JTextArea ta){

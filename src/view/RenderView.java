@@ -9,6 +9,7 @@ public class RenderView extends JFrame implements ActionListener {
     private JScrollPane scrollbar;
     private int width = 1200, height = 900;
     private JMenuBar mb;
+    private String fName;
     TextiController contr;
     JTextArea ta;
     Font bold, plain;
@@ -22,11 +23,6 @@ public class RenderView extends JFrame implements ActionListener {
     private void userInterface(Menu menu){
 
         mb = menu.getMB();
-        menu.newItem.addActionListener(this);
-        menu.doBold.addActionListener(this);
-        menu.saveItem.addActionListener(this);
-        menu.openItem.addActionListener(this);
-        menu.cursive.addActionListener(this);
         this.setTitle("Texti - the worlds best word processor!");
         //this.iconImage
         this.setSize(width, height);
@@ -34,6 +30,17 @@ public class RenderView extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // this.add(scrollbar);
         this.setJMenuBar(mb);
+        //add action listeners
+        menu.newItem.addActionListener(this);
+        menu.doBold.addActionListener(this);
+        menu.saveItem.addActionListener(this);
+        menu.openItem.addActionListener(this);
+        menu.cursive.addActionListener(this);
+        //Fonts action Listeners:
+        menu.serif.addActionListener(this);
+        menu.cantarell.addActionListener(this);
+        menu.monospaced.addActionListener(this);
+        menu.sansserif.addActionListener(this);
         this.show();
     }
 
@@ -53,6 +60,18 @@ public class RenderView extends JFrame implements ActionListener {
             contr.doOpen(ta);
         }else if(action.equals("Cursive")){
             contr.cursive(ta);
+        }else if(action.equals("Serif")){
+            fName= "Serif".toString();
+            contr.setFont(fName, ta);
+        }else if(action.equals("Monospaced")){
+            fName= "Monospaced".toString();
+            contr.setFont(fName, ta);
+        }else if(action.equals("SansSerif")){
+             fName= "SansSerif".toString();
+            contr.setFont(fName, ta);
+        }else if(action.equals("Cantarell")){
+            fName= "Cantarell".toString();
+            contr.setFont(fName, ta);
         }
 
     }
