@@ -11,11 +11,12 @@ public class RenderView extends JFrame implements ActionListener {
     private JMenuBar mb;
     private String fName;
     TextiController contr;
+    Menu menu;
     JTextPane ta;
     Font bold, plain;
     public RenderView(TextiController contr){
         this.contr=contr;
-       Menu menu = new Menu(contr);
+        menu = new Menu(contr);
       userInterface(menu);
       //menu.setVisible(true);
 
@@ -35,20 +36,27 @@ public class RenderView extends JFrame implements ActionListener {
         menu.s16.addActionListener(this);
         menu.s18.addActionListener(this);
         menu.s20.addActionListener(this);
+
         //Fonts action Listeners:
         menu.serif.addActionListener(this);
         menu.cantarell.addActionListener(this);
         menu.monospaced.addActionListener(this);
         menu.sansserif.addActionListener(this);
+        //colors action-listener
+        menu.colors.addActionListener(this);
+        //menu.colors.setPrototypeDisplayValue("Orange");
 
         this.setTitle("Texti - the worlds best word processor!");
         //this.iconImage
-        this.setSize(width, height);
+
         this.setLocation(0,0);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // this.add(scrollbar);
         this.setJMenuBar(mb);
-        this.show();
+        this.pack();
+        this.setVisible(true);
+        this.setBounds(10,10,width,height);
+        //this.show();
 
     }
 
@@ -57,6 +65,7 @@ public class RenderView extends JFrame implements ActionListener {
     //}
     public void actionPerformed(ActionEvent e){
         String action = e.getActionCommand();
+
         if(action.equals("New")){
              newTA();
         }else if(action.equals("Bold")){
@@ -101,6 +110,9 @@ public class RenderView extends JFrame implements ActionListener {
         }
         else if(action.equals("20")){
             contr.setSize(20);
+        } else if(e.getSource()==menu.colors){
+            System.out.println("listening in colors");
+            contr.setColor(menu.colors.getSelectedItem().toString());
         }
 
     }
@@ -109,7 +121,7 @@ public class RenderView extends JFrame implements ActionListener {
         scrollbar = new JScrollPane((ta));
         this.add(ta);
         ta.setText("");
-        this.show();
+        this.setVisible(true);
 
     }
 

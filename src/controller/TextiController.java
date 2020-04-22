@@ -31,12 +31,17 @@ public class TextiController extends JFrame {
         SaveFile sf = new SaveFile();
         sf.doSave(ta);
     }
+    public void setColor(String color){
+        fontm.setColor(color);
+        ta.setForeground(fontm.getColor());
+    }
     public void doOpen(){
         o.doOpen(ta);
     }
 
     public void setSize(int size){
         fontm.size(size);
+
     }
 
 }

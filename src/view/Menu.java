@@ -11,6 +11,7 @@ public class Menu extends JFrame{
     private JMenuBar menuBar;
     private JMenuItem menuItem;
     private JRadioButtonMenuItem rbMenuItem;
+    public JComboBox colors;
     private JCheckBoxMenuItem cbMenuItem;
     private JMenu file, view, toolWindow, edit, insert, formatting, help, print, alignment, lists, size_of_letters;
     JMenuItem newItem, openItem, saveItem,saveAsItem,undo, redo, cut, copy, paste, spell_check,
@@ -22,6 +23,7 @@ public class Menu extends JFrame{
       this.contr=contr;
       render();
     }
+    String[] colorArr={"Black","Red", "Purple", "Orange",  "Blue", "Green", "Yellow"};
     private void render(){
        menu();
     }
@@ -122,6 +124,12 @@ public class Menu extends JFrame{
         size_of_letters.add(s18);
         size_of_letters.add(s20);
 
+        //code for coloring text
+        colors= new JComboBox(colorArr);
+        colors.setBounds( 40, 30, 10, 35);
+        colors.setMaximumSize(colors.getPreferredSize());
+
+        menuBar.add(colors);
 
 
         underline = new JMenuItem("Underline");

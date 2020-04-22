@@ -8,6 +8,10 @@ public class FontManagement {
     JTextPane ta;
 Font font = new Font(null);
     int mode=0;
+    Color color;
+
+
+
     public void setTextPane(JTextPane ta){
         this.ta=ta;
     }
@@ -72,5 +76,25 @@ Font font = new Font(null);
     public void setFont(String fontname){
         font = new Font(fontname, mode, ta.getFont().getSize());
         ta.setFont(font);
+    }
+    public void setColor(String selectedColor){
+        if(selectedColor.equals("Red")){
+            color = Color.RED;
+        } if(selectedColor.equals("Blue")){
+            color = Color.BLUE;
+        } if(selectedColor.equals("Green")){
+            color = Color.GREEN;
+        } if(selectedColor.equals("Purple")){
+            color = Color.MAGENTA;
+        } if(selectedColor.equals("Orange")){
+            color = Color.ORANGE;
+        } if(selectedColor.equals("Black")){
+            color = Color.BLACK;
+        }if(selectedColor.equals("Yellow")) {
+            color = Color.YELLOW;
+        }
+    }
+    public Color getColor(){
+        return color;
     }
 }
