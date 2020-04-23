@@ -1,8 +1,10 @@
 package model;
-import java.util.*;
+
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.font.TextAttribute;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FontManagement {
     JTextPane ta;
@@ -66,6 +68,23 @@ Font font = new Font(null);
             ta.setFont(font);
             System.out.println("mode, italics else" + mode);
         }
+    }
+    public void doUnderline (){
+        System.out.println("doUnerline");
+        int s = ta.getFont().getStyle();
+
+        //Font font = label.getFont();
+      /*  Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        System.out.println(font.getAttributes().toString());
+        ta.setFont(font.deriveFont(attributes));
+        System.out.println(font.getAttributes().toString()); */
+        Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+        fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        font  = new Font(ta.getFont().getName(), Font.ITALIC, ta.getFont().getSize()).deriveFont(fontAttributes);
+        ta.setFont(font);
+
+
     }
     public void size(int sz){
         font = new Font(ta.getFont().getName(),ta.getFont().getStyle(), sz );
