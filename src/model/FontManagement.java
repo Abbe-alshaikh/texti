@@ -1,8 +1,10 @@
 package model;
 import java.util.*;
 import javax.swing.*;
+import javax.swing.text.*;
 import java.awt.*;
-
+import javax.swing.text.Document;
+import javax.swing.text.BadLocationException;
 
 public class FontManagement {
     JTextPane ta;
@@ -10,13 +12,30 @@ Font font = new Font(null);
     int mode=0;
     Color color;
 
+    SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+
+    public String getSelectedText () {
+
+        Caret caret = ta.getCaret();
+        if (caret == null) {
+            // No caret => no selected text
+            return null;
+        }
+        String s = ta.getSelectedText ();
+        if (s == null) {
+            return null;
+        }
+
+        return s;
+    }
 
 
     public void setTextPane(JTextPane ta){
         this.ta=ta;
     }
     public void bold(){
-        if (ta.getFont().getStyle() == Font.BOLD){ //bold = 1
+
+       /* if (ta.getFont().getStyle() == Font.BOLD){ //bold = 1
             //  plain = new Font(ta.getFont().getName(), Font.PLAIN, ta.getFont().getSize());
             // ta.setFont(plain);
             doPlain();
@@ -25,6 +44,12 @@ Font font = new Font(null);
         }else{
             doBold();
         }
+        */
+        Boolean m = StyleConstants.isBold(attributeSet);
+        StyleConstants.setBold(attributeSet, !m);
+        System.out.println(m);
+        ta.setCharacterAttributes(attributeSet, true);
+
     }
 
     private void doBold(){
@@ -47,7 +72,7 @@ Font font = new Font(null);
         System.out.println("mode, doplain" + mode);
     }
     public void cursive(){
-        if(ta.getFont().getStyle() == Font.ITALIC){
+         /* if(ta.getFont().getStyle() == Font.ITALIC){
 
             mode -=Font.ITALIC;
             font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
@@ -66,16 +91,27 @@ Font font = new Font(null);
             ta.setFont(font);
             System.out.println("mode, italics else" + mode);
         }
+        System.out.println(ta.getFont().getStyle()); */
+        Boolean m = StyleConstants.isItalic(attributeSet);
+        StyleConstants.setItalic(attributeSet, !m);
+        System.out.println(m);
+        ta.setCharacterAttributes(attributeSet, true);
     }
     public void size(int sz){
         font = new Font(ta.getFont().getName(),ta.getFont().getStyle(), sz );
         ta.setFont(font);
     }
-
     //managing the different font-options
     public void setFont(String fontname){
-        font = new Font(fontname, mode, ta.getFont().getSize());
+       /* font = new Font(fontname, mode, ta.getFont().getSize());
         ta.setFont(font);
+        System.out.println(ta.getFont().getStyle());
+        */
+
+        MutableAttributeSet newFont = new SimpleAttributeSet();
+        StyleConstants.setForeground(newFont, Color.black);
+        StyleConstants.setFontFamily(newFont, fontname );
+        ta.setCharacterAttributes(newFont, true);
     }
     public void setColor(String selectedColor){
         if(selectedColor.equals("Red")){
