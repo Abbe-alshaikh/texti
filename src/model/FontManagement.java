@@ -92,7 +92,7 @@ Font font = new Font(null);
             ta.setFont(font);
             System.out.println("mode, italics else" + mode);
         }
-        System.out.println(ta.getFont().getStyle()); */
+        System.out.println(ta.getFont().getStyle());
         Boolean m = StyleConstants.isItalic(attributeSet);
         StyleConstants.setItalic(attributeSet, !m);
         System.out.println(m);
@@ -105,7 +105,7 @@ Font font = new Font(null);
 
     //managing the different font-options
     public void setFont(String fontname){
-        font = new Font(fontname, mode, ta.getFont().getSize());
+        /* font = new Font(fontname, mode, ta.getFont().getSize());
         ta.setFont(font);
         System.out.println(ta.getFont().getStyle());
         */
