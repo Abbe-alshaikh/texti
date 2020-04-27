@@ -3,8 +3,9 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.text.*;
 import java.awt.*;
-import javax.swing.text.Document;
-import javax.swing.text.BadLocationException;
+import java.awt.font.TextAttribute;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FontManagement {
     JTextPane ta;
@@ -72,7 +73,7 @@ Font font = new Font(null);
         System.out.println("mode, doplain" + mode);
     }
     public void cursive(){
-         /* if(ta.getFont().getStyle() == Font.ITALIC){
+        if(ta.getFont().getStyle() == Font.ITALIC){
 
             mode -=Font.ITALIC;
             font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
@@ -101,9 +102,10 @@ Font font = new Font(null);
         font = new Font(ta.getFont().getName(),ta.getFont().getStyle(), sz );
         ta.setFont(font);
     }
+
     //managing the different font-options
     public void setFont(String fontname){
-       /* font = new Font(fontname, mode, ta.getFont().getSize());
+        font = new Font(fontname, mode, ta.getFont().getSize());
         ta.setFont(font);
         System.out.println(ta.getFont().getStyle());
         */

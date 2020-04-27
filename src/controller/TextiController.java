@@ -1,7 +1,9 @@
 package controller;
+import model.FontManagement;
+import model.OpenFile;
+import model.SaveFile;
+
 import javax.swing.*;
-import java.awt.*;
-import model.*;
 
 public class TextiController extends JFrame {
     JTextPane ta;
@@ -42,6 +44,9 @@ public class TextiController extends JFrame {
     public void setSize(int size){
         fontm.size(size);
 
+    }
+    public void doUnerline(){
+        fontm.doUnderline();
     }
 
 }

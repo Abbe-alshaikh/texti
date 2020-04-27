@@ -26,6 +26,7 @@ public class RenderView extends JFrame implements ActionListener {
         mb = menu.getMB();
         menu.newItem.addActionListener(this);
         menu.doBold.addActionListener(this);
+        menu.underline.addActionListener(this);
         menu.saveItem.addActionListener(this);
         menu.openItem.addActionListener(this);
         menu.cursive.addActionListener(this);
@@ -77,7 +78,9 @@ public class RenderView extends JFrame implements ActionListener {
             contr.doOpen();
         }else if(action.equals("Cursive")){
             contr.cursive();
-        }else if(action.equals("Serif")){
+        }else if (action.equals("Underline")){
+            contr.doUnerline();
+        } else if(action.equals("Serif")){
             fName= "Serif".toString();
             contr.setFont(fName);
         }else if(action.equals("Monospaced")){
