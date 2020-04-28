@@ -1,13 +1,15 @@
 package controller;
 import model.FontManagement;
-import model.OpenFile;
-import model.SaveFile;
 
 import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
+
+import model.*;
 
 public class TextiController extends JFrame {
     JTextPane ta;
-    OpenFile o = new OpenFile();
+    ReadFile o = new ReadFile();
     FontManagement fontm= new FontManagement();
     //vi flyttar skapandet av ta till modellen och det returneras här tbx till vyn
     public JTextPane openNewFile(){
@@ -20,7 +22,6 @@ public class TextiController extends JFrame {
         fontm.bold();
     }
     public void cursive(){
-
         fontm.cursive();
     }
     //controlling fonts
@@ -28,24 +29,23 @@ public class TextiController extends JFrame {
         fontm.setFont(font);
     }
 
-
-    public void doSave(){
-        SaveFile sf = new SaveFile();
-        sf.doSave(ta);
+    public void doSave(JTextPane ta) throws IOException, ClassNotFoundException {
+        WriteFile wf = new WriteFile();
+        wf.save(ta);
+    }
+    public JTextPane doOpen() throws IOException, ClassNotFoundException {
+        ta = o.doOpen();
+        fontm.setTextPane(ta);
+        return ta;
     }
     public void setColor(String color){
         fontm.setColor(color);
         ta.setForeground(fontm.getColor());
     }
-    public void doOpen(){
-        o.doOpen(ta);
-    }
-
     public void setSize(int size){
         fontm.size(size);
-
     }
-    public void doUnerline(){
+    public void doUnderline(){
         fontm.doUnderline();
     }
 

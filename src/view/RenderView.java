@@ -4,6 +4,7 @@ import controller.TextiController;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 public class RenderView extends JFrame implements ActionListener {
     private JScrollPane scrollbar;
@@ -70,16 +71,30 @@ public class RenderView extends JFrame implements ActionListener {
         if(action.equals("New")){
              newTA();
         }else if(action.equals("Bold")){
-         contr.bold();
+            contr.bold();
         }else if(action.equals("Save")) {
-            contr.doSave();
+            try {
+                contr.doSave(ta);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
         }else if(action.equals("Open")) {
-             newTA();
-            contr.doOpen();
+            try {
+                this.ta = contr.doOpen();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+            scrollbar = new JScrollPane((ta));
+            this.add(ta);
+            this.setVisible(true);
         }else if(action.equals("Cursive")){
             contr.cursive();
         }else if (action.equals("Underline")){
-            contr.doUnerline();
+            contr.doUnderline();
         } else if(action.equals("Serif")){
             fName= "Serif".toString();
             contr.setFont(fName);

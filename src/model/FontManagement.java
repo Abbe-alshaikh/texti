@@ -73,7 +73,7 @@ Font font = new Font(null);
         System.out.println("mode, doplain" + mode);
     }
     public void cursive(){
-        if(ta.getFont().getStyle() == Font.ITALIC){
+        /*if(ta.getFont().getStyle() == Font.ITALIC){
 
             mode -=Font.ITALIC;
             font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
@@ -91,7 +91,7 @@ Font font = new Font(null);
             font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
             ta.setFont(font);
             System.out.println("mode, italics else" + mode);
-        }
+        }*/
         System.out.println(ta.getFont().getStyle());
         Boolean m = StyleConstants.isItalic(attributeSet);
         StyleConstants.setItalic(attributeSet, !m);
@@ -134,5 +134,8 @@ Font font = new Font(null);
     }
     public Color getColor(){
         return color;
+    }
+
+    public void doUnderline() {
     }
 }
