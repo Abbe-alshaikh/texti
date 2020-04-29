@@ -1,11 +1,11 @@
 package model;
-import java.util.*;
+
 import javax.swing.*;
-import javax.swing.text.*;
+import javax.swing.text.Caret;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 import java.awt.*;
-import java.awt.font.TextAttribute;
-import java.util.HashMap;
-import java.util.Map;
 
 public class FontManagement {
     JTextPane ta;
@@ -46,6 +46,7 @@ Font font = new Font(null);
             doBold();
         }
         */
+
         Boolean m = StyleConstants.isBold(attributeSet);
         StyleConstants.setBold(attributeSet, !m);
         System.out.println(m);
@@ -137,5 +138,10 @@ Font font = new Font(null);
     }
 
     public void doUnderline() {
+
+        Boolean m = StyleConstants.isUnderline(attributeSet);
+        StyleConstants.setUnderline(attributeSet, !m);
+        System.out.println(m);
+        ta.setCharacterAttributes(attributeSet, true);
     }
 }
