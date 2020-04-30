@@ -141,7 +141,6 @@ Font font = new Font(null);
 
         Boolean m = StyleConstants.isUnderline(attributeSet);
         StyleConstants.setUnderline(attributeSet, !m);
-        System.out.println(m);
         ta.setCharacterAttributes(attributeSet, true);
     }
 }
