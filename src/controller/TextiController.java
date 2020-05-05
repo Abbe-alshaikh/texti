@@ -40,7 +40,7 @@ public class TextiController extends JFrame {
     }
     public void setColor(String color){
         fontm.setColor(color);
-        ta.setForeground(fontm.getColor());
+       // ta.setForeground(fontm.getColor());
     }
     public void setSize(int size){
         fontm.size(size);

@@ -11,9 +11,8 @@ public class FontManagement {
     JTextPane ta;
 Font font = new Font(null);
     int mode=0;
-    Color color;
-
-    SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+    Color color = Color.BLACK;
+    MutableAttributeSet attributeSet= new SimpleAttributeSet();
 
     public String getSelectedText () {
 
@@ -36,17 +35,6 @@ Font font = new Font(null);
     }
     public void bold(){
 
-       /* if (ta.getFont().getStyle() == Font.BOLD){ //bold = 1
-            //  plain = new Font(ta.getFont().getName(), Font.PLAIN, ta.getFont().getSize());
-            // ta.setFont(plain);
-            doPlain();
-        }else if(ta.getFont().getStyle() == 3) {
-           doPlain();
-        }else{
-            doBold();
-        }
-        */
-
         Boolean m = StyleConstants.isBold(attributeSet);
         StyleConstants.setBold(attributeSet, !m);
         System.out.println(m);
@@ -54,67 +42,24 @@ Font font = new Font(null);
 
     }
 
-    private void doBold(){
-
-        mode += Font.BOLD;
-        font = new Font(ta.getFont().getName(), mode, ta.getFont().getSize());
-        ta.setFont(font);
-        System.out.println("mode, dobold" + mode);
-        
-    }
-    //bold = 1
-    //cursive = 2
-    //bold + cursive = 3
-
-    private void doPlain(){
-
-        mode -= Font.BOLD;
-        font = new Font(ta.getFont().getName(), mode, ta.getFont().getSize());
-        ta.setFont(font);
-        System.out.println("mode, doplain" + mode);
-    }
     public void cursive(){
-        /*if(ta.getFont().getStyle() == Font.ITALIC){
 
-            mode -=Font.ITALIC;
-            font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
-            ta.setFont(font);
-            System.out.println("mode, ITALIC"+ mode);
-        }else if(ta.getFont().getStyle() == 3){
-
-            mode -= Font.ITALIC;
-            font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
-            ta.setFont(font);
-            System.out.println("mode, italics else" + mode);
-        }else{
-
-            mode += Font.ITALIC;
-            font = new Font(ta.getFont().getName(), mode , ta.getFont().getSize());
-            ta.setFont(font);
-            System.out.println("mode, italics else" + mode);
-        }*/
-        System.out.println(ta.getFont().getStyle());
         Boolean m = StyleConstants.isItalic(attributeSet);
         StyleConstants.setItalic(attributeSet, !m);
         System.out.println(m);
         ta.setCharacterAttributes(attributeSet, true);
     }
     public void size(int sz){
-        font = new Font(ta.getFont().getName(),ta.getFont().getStyle(), sz );
-        ta.setFont(font);
+        StyleConstants.setFontSize(attributeSet, sz);
+        ta.setCharacterAttributes(attributeSet, true);
     }
 
     //managing the different font-options
     public void setFont(String fontname){
-        /* font = new Font(fontname, mode, ta.getFont().getSize());
-        ta.setFont(font);
-        System.out.println(ta.getFont().getStyle());
-        */
 
-        MutableAttributeSet newFont = new SimpleAttributeSet();
-        StyleConstants.setForeground(newFont, Color.black);
-        StyleConstants.setFontFamily(newFont, fontname );
-        ta.setCharacterAttributes(newFont, true);
+        StyleConstants.setForeground(attributeSet, color);
+        StyleConstants.setFontFamily(attributeSet, fontname );
+        ta.setCharacterAttributes(attributeSet, true);
     }
     public void setColor(String selectedColor){
         if(selectedColor.equals("Red")){
@@ -123,7 +68,7 @@ Font font = new Font(null);
             color = Color.BLUE;
         } if(selectedColor.equals("Green")){
             color = Color.GREEN;
-        } if(selectedColor.equals("Purple")){
+        } if(selectedColor.equals("Purpdle")){
             color = Color.MAGENTA;
         } if(selectedColor.equals("Orange")){
             color = Color.ORANGE;
@@ -132,9 +77,12 @@ Font font = new Font(null);
         }if(selectedColor.equals("Yellow")) {
             color = Color.YELLOW;
         }
+        setForegroundColor();
     }
-    public Color getColor(){
-        return color;
+    private void setForegroundColor(){
+        StyleConstants.setForeground(attributeSet, color);
+        ta.setCharacterAttributes(attributeSet, true);
+        System.out.println("in fgcolor");
     }
 
     public void doUnderline() {
@@ -143,4 +91,5 @@ Font font = new Font(null);
         StyleConstants.setUnderline(attributeSet, !m);
         ta.setCharacterAttributes(attributeSet, true);
     }
+
 }
