@@ -117,4 +117,19 @@ Font font = new Font(null);
             }
         }
     }
+    public void createList(){
+        int beginning=ta.getCaret().getDot();
+        int end=ta.getCaret().getMark();
+        StyledDocument doc = ta.getStyledDocument();
+        TabStop[] tabs=new TabStop[1];
+        tabs[0] =new TabStop(60, TabStop.ALIGN_RIGHT, TabStop.LEAD_NONE);
+        TabSet tabSet= new TabSet(tabs);
+        StyleContext sc = StyleContext.getDefaultStyleContext();
+        AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY,
+                StyleConstants.TabSet, tabSet);
+        ta.setParagraphAttributes(aset, false);
+        String text = getSelectedText();
+
+
+    }
 }

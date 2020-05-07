@@ -31,6 +31,8 @@ public class RenderView extends JFrame implements ActionListener {
         menu.saveItem.addActionListener(this);
         menu.openItem.addActionListener(this);
         menu.cursive.addActionListener(this);
+        //image,picture actionListener
+        menu.picture.addActionListener(this);
         // Size action listeners
         menu.s8.addActionListener(this);
         menu.s10.addActionListener(this);
@@ -39,6 +41,7 @@ public class RenderView extends JFrame implements ActionListener {
         menu.s16.addActionListener(this);
         menu.s18.addActionListener(this);
         menu.s20.addActionListener(this);
+
         // Alignment action listeners
         menu.left.addActionListener(this);
         menu.center.addActionListener(this);
@@ -64,6 +67,9 @@ public class RenderView extends JFrame implements ActionListener {
         this.setVisible(true);
         this.setBounds(10,10,width,height);
         //this.show();
+
+        //Lists
+        menu.bullet_points.addActionListener(this);
 
     }
 
@@ -113,7 +119,6 @@ public class RenderView extends JFrame implements ActionListener {
             fName= "Cantarell".toString();
             contr.setFont(fName);
         }
-        // Size
         else if(action.equals("8")){
             contr.setSize(8);
         }
@@ -137,6 +142,10 @@ public class RenderView extends JFrame implements ActionListener {
         } else if(e.getSource()==menu.colors){
             System.out.println("listening in colors");
             contr.setColor(menu.colors.getSelectedItem().toString());
+        }else if(action.equals("Bullet Points")){
+            contr.createList();
+        }else if(action.equals("Insert Picture")){
+            contr.insertImg(ta);
         }
         //Allignment
         else if (action.equals("Left")){

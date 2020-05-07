@@ -2,6 +2,7 @@ package startup;
 
 import controller.TextiController;
 
+import integration.ImgHandler;
 import view.*;
 
 import javax.swing.*;
@@ -10,7 +11,8 @@ import java.awt.*;
 public class Startup {
     public static void main(String args[]){
        // JFrame frame = new JFrame("wordrocessor, Texti");
-     TextiController contr = new TextiController();
+        ImgHandler imgHandler=new ImgHandler();
+     TextiController contr = new TextiController(imgHandler);
       RenderView rv = new RenderView(contr);
 
       //something to look into

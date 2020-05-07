@@ -1,4 +1,5 @@
 package controller;
+import integration.ImgHandler;
 import model.FontManagement;
 
 import javax.swing.*;
@@ -11,6 +12,12 @@ public class TextiController extends JFrame {
     JTextPane ta;
     ReadFile o = new ReadFile();
     FontManagement fontm= new FontManagement();
+    ImgHandler imgHandler;
+
+    public TextiController(ImgHandler imgHdlr){
+        this.imgHandler=imgHdlr;
+    }
+
     //vi flyttar skapandet av ta till modellen och det returneras här tbx till vyn
     public JTextPane openNewFile(){
         ta = o.openNewFile();
@@ -41,6 +48,13 @@ public class TextiController extends JFrame {
     public void setColor(String color){
         fontm.setColor(color);
        // ta.setForeground(fontm.getColor());
+    }
+
+    public void createList(){
+        fontm.createList();
+    }
+    public void insertImg(JTextPane ta){
+        imgHandler.insertImg(ta);
     }
     public void setSize(int size){
         fontm.size(size);

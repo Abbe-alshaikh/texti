@@ -2,7 +2,9 @@ package model;
 
 import javax.swing.*;
 import java.io.*;
-
+import javax.swing.text.html.HTML;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.HTMLEditorKit;
 public class ReadFile {
 
     JTextPane ta;
