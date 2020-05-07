@@ -1,10 +1,7 @@
 package model;
 
 import javax.swing.*;
-import javax.swing.text.Caret;
-import javax.swing.text.MutableAttributeSet;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
+import javax.swing.text.*;
 import java.awt.*;
 
 public class FontManagement {
@@ -92,4 +89,32 @@ Font font = new Font(null);
         ta.setCharacterAttributes(attributeSet, true);
     }
 
+    public void setAlignment(String placement) {
+        StyledDocument doc = ta.getStyledDocument();
+        int plc=0;
+        if (placement.equals("left")){
+            plc=0;
+        }else if (placement.equals("center")){
+            plc=1;
+        }else if (placement.equals("right")){
+           plc=2;
+        }
+        String text = getSelectedText();
+        int pos = ta.getCaretPosition();
+        int pos2 = ta.getCaret().getMark();
+        if (text == null) {
+            StyleConstants.setAlignment(attributeSet, plc);
+            ta.setCharacterAttributes(attributeSet, true);
+            doc.setParagraphAttributes(pos, 1, attributeSet, false);
+        }else{
+            System.out.println(text);
+            StyleConstants.setAlignment(attributeSet, plc);
+            ta.setCharacterAttributes(attributeSet, true);
+            if (pos>pos2) {
+                doc.setParagraphAttributes(pos - text.length(), text.length(), attributeSet, false);
+            }else{
+                doc.setParagraphAttributes(pos, text.length(), attributeSet, false);
+            }
+        }
+    }
 }

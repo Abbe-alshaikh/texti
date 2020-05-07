@@ -31,6 +31,7 @@ public class RenderView extends JFrame implements ActionListener {
         menu.saveItem.addActionListener(this);
         menu.openItem.addActionListener(this);
         menu.cursive.addActionListener(this);
+        // Size action listeners
         menu.s8.addActionListener(this);
         menu.s10.addActionListener(this);
         menu.s12.addActionListener(this);
@@ -38,6 +39,10 @@ public class RenderView extends JFrame implements ActionListener {
         menu.s16.addActionListener(this);
         menu.s18.addActionListener(this);
         menu.s20.addActionListener(this);
+        // Alignment action listeners
+        menu.left.addActionListener(this);
+        menu.center.addActionListener(this);
+        menu.right.addActionListener(this);
 
         //Fonts action Listeners:
         menu.serif.addActionListener(this);
@@ -108,6 +113,7 @@ public class RenderView extends JFrame implements ActionListener {
             fName= "Cantarell".toString();
             contr.setFont(fName);
         }
+        // Size
         else if(action.equals("8")){
             contr.setSize(8);
         }
@@ -131,6 +137,14 @@ public class RenderView extends JFrame implements ActionListener {
         } else if(e.getSource()==menu.colors){
             System.out.println("listening in colors");
             contr.setColor(menu.colors.getSelectedItem().toString());
+        }
+        //Allignment
+        else if (action.equals("Left")){
+            contr.setAlignment("left");
+        }else if (action.equals("Center")){
+            contr.setAlignment("center");
+        }else if (action.equals("Right")){
+            contr.setAlignment("right");
         }
 
     }

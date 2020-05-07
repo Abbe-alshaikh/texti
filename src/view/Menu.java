@@ -140,9 +140,9 @@ public class Menu extends JFrame{
 
         alignment = new JMenu ("Alignment ");
         formatting.add(alignment);
-        left = new JMenuItem("Left ");
-        center = new JMenuItem("Center ");
-        right = new JMenuItem("Right ");
+        left = new JMenuItem("Left");
+        center = new JMenuItem("Center");
+        right = new JMenuItem("Right");
         alignment.add(left);
         alignment.add(center);
         alignment.add(right);

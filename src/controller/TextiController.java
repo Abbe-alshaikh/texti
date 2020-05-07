@@ -49,4 +49,7 @@ public class TextiController extends JFrame {
         fontm.doUnderline();
     }
 
+    public void setAlignment(String placement) {
+        fontm.setAlignment(placement);
+    }
 }
