@@ -40,6 +40,10 @@ public class TextiController extends JFrame {
         WriteFile wf = new WriteFile();
         wf.save(ta);
     }
+    public void export(JTextPane ta){
+        SaveContent sc = new SaveContent();
+        sc.save(ta);
+    }
     public JTextPane doOpen() throws IOException, ClassNotFoundException {
         ta = o.doOpen();
         fontm.setTextPane(ta);
@@ -61,6 +65,10 @@ public class TextiController extends JFrame {
     }
     public void doUnderline(){
         fontm.doUnderline();
+    }
+    public void help(){
+        Help help = new Help();
+        help.help();
     }
 
     public void setAlignment(String placement) {

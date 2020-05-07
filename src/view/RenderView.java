@@ -1,5 +1,6 @@
 package view;
 import controller.TextiController;
+import model.SidePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,27 +11,33 @@ public class RenderView extends JFrame implements ActionListener {
     private JScrollPane scrollbar;
     private int width = 1200, height = 900;
     private JMenuBar mb;
+    private JPanel sp;
     private String fName;
     TextiController contr;
     Menu menu;
+    SidePanel sidePanel;
     JTextPane ta;
     Font bold, plain;
     public RenderView(TextiController contr){
         this.contr=contr;
         menu = new Menu(contr);
-      userInterface(menu);
+        sidePanel = new SidePanel(contr);
+      userInterface(menu, sidePanel);
       //menu.setVisible(true);
 
     }
-    private void userInterface(Menu menu){
+    private void userInterface(Menu menu, SidePanel sidePanel){
 
         mb = menu.getMB();
+        sp = sidePanel.getSidePanel();
+
         menu.newItem.addActionListener(this);
         menu.doBold.addActionListener(this);
         menu.underline.addActionListener(this);
         menu.saveItem.addActionListener(this);
         menu.openItem.addActionListener(this);
         menu.cursive.addActionListener(this);
+        menu.export.addActionListener(this);
         //image,picture actionListener
         menu.picture.addActionListener(this);
         // Size action listeners
@@ -56,6 +63,13 @@ public class RenderView extends JFrame implements ActionListener {
         menu.colors.addActionListener(this);
         //menu.colors.setPrototypeDisplayValue("Orange");
 
+        //Action listeners for Side Panel
+        sidePanel.bold.addActionListener(this);
+        sidePanel.high.addActionListener(this);
+        sidePanel.cursive.addActionListener(this);
+        sidePanel.underline.addActionListener(this);
+        sidePanel.help.addActionListener(this);
+
         this.setTitle("Texti - the worlds best word processor!");
         //this.iconImage
 
@@ -63,6 +77,7 @@ public class RenderView extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // this.add(scrollbar);
         this.setJMenuBar(mb);
+        this.add(sp, BorderLayout.BEFORE_LINE_BEGINS);
         this.pack();
         this.setVisible(true);
         this.setBounds(10,10,width,height);
@@ -83,29 +98,30 @@ public class RenderView extends JFrame implements ActionListener {
              newTA();
         }else if(action.equals("Bold")){
             contr.bold();
+            sidePanel.press(sidePanel.bold);
         }else if(action.equals("Save")) {
             try {
                 contr.doSave(ta);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
         }else if(action.equals("Open")) {
             try {
                 this.ta = contr.doOpen();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            } catch (ClassNotFoundException ex) {
+            } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
             scrollbar = new JScrollPane((ta));
             this.add(ta);
             this.setVisible(true);
+        }else if (action.equals("Export to .rtf")) {
+            contr.export(ta);
         }else if(action.equals("Cursive")){
             contr.cursive();
+            sidePanel.press(sidePanel.cursive);
         }else if (action.equals("Underline")){
             contr.doUnderline();
+            sidePanel.press(sidePanel.underline);
         } else if(action.equals("Serif")){
             fName= "Serif".toString();
             contr.setFont(fName);
@@ -144,8 +160,31 @@ public class RenderView extends JFrame implements ActionListener {
             contr.setColor(menu.colors.getSelectedItem().toString());
         }else if(action.equals("Bullet Points")){
             contr.createList();
+            sidePanel.press(sidePanel.bulletList);
         }else if(action.equals("Insert Picture")){
             contr.insertImg(ta);
+        }
+        //Sidepanel
+        else if (action.equals("B")){
+            contr.bold();
+            sidePanel.press(sidePanel.bold);
+        }else if (action.equals("C")){
+            contr.cursive();
+            sidePanel.press(sidePanel.cursive);
+        }else if (action.equals("U")){
+            contr.doUnderline();
+            sidePanel.press(sidePanel.underline);
+        }else if (action.equals("H")){
+            //contr.highLight();
+            sidePanel.press(sidePanel.high);
+        }else if (action.equals("*")){
+            contr.createList();
+            sidePanel.press(sidePanel.bulletList);
+        }else if (action.equals("1.")){
+            contr.insertImg(ta);
+            sidePanel.press(sidePanel.numberedList);
+        }else if (action.equals("Help")){
+            contr.help();
         }
         //Allignment
         else if (action.equals("Left")){

@@ -4,6 +4,7 @@ import controller.TextiController;
 
 import integration.ImgHandler;
 import view.*;
+import view.RenderView;
 
 import javax.swing.*;
 import java.awt.*;

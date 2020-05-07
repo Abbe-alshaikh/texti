@@ -17,7 +17,7 @@ public class Menu extends JFrame{
     JMenuItem newItem, openItem, saveItem,saveAsItem,undo, redo, cut, copy, paste, spell_check,
             editWindow, fontWindow, picture, table, doBold, cursive, underline,
             highlighting, left, center, right, bullet_points, enumeration, fonts, s8, s10, s12, s14, s16, s18, s20,
-            cantarell, monospaced, sansserif, serif;
+            cantarell, monospaced, sansserif, serif, export;
 
     public Menu(TextiController contr){
       this.contr=contr;
@@ -70,11 +70,11 @@ public class Menu extends JFrame{
         newItem = new JMenuItem("New");
         openItem = new JMenuItem("Open");
         saveItem = new JMenuItem("Save");
-        saveAsItem = new JMenuItem("Save As..");
+        export = new JMenuItem("Export to .rtf");
         file.add(newItem);
         file.add(openItem);
         file.add(saveItem);
-        file.add(saveAsItem);
+        file.add(export);
 
         undo = new JMenuItem("Undo");
         redo = new JMenuItem("Redo");
