@@ -2,4 +2,17 @@
 jdk:
   - oraclejdk8
 
-script: ant build
+install: true
+script: ./mvnw clean install
+cache:
+  directories:
+  - $HOME/.m2
+  deploy:
+  -
+    on:
+      branch: release
+    provider: bintray
+    skip_cleanup: true
+    file: target/bin/bintray.json
+    user: nfrankel
+    key: $BINTRAY_API_KEY
