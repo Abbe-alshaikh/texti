@@ -86,6 +86,9 @@ public class RenderView extends JFrame implements ActionListener {
         //Lists
         menu.bullet_points.addActionListener(this);
 
+        //initiate with a new text-area
+        newTA();
+
     }
 
     //void renderTV(tv){
@@ -197,12 +200,15 @@ public class RenderView extends JFrame implements ActionListener {
 
     }
     public void newTA(){
-        ta = contr.openNewFile();
-        scrollbar = new JScrollPane((ta));
-        this.add(ta);
-        ta.setText("");
-        this.setVisible(true);
-
+        if(ta == null) {
+            ta = contr.openNewFile();
+            scrollbar = new JScrollPane((ta));
+            this.add(ta);
+            ta.setText("");
+            this.setVisible(true);
+        }else{
+            ta.setText("");
+        }
     }
 
 }
