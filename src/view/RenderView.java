@@ -21,11 +21,11 @@ public class RenderView extends JFrame implements ActionListener {
     public RenderView(TextiController contr){
         this.contr=contr;
         menu = new Menu(contr);
-        sidePanel = new SidePanel(contr);
-      userInterface(menu, sidePanel);
+        sidePanel = new SidePanel(/*contr*/);
+        userInterface(menu, sidePanel);
       //menu.setVisible(true);
-
     }
+
     private void userInterface(Menu menu, SidePanel sidePanel){
 
         mb = menu.getMB();
@@ -68,6 +68,8 @@ public class RenderView extends JFrame implements ActionListener {
         sidePanel.high.addActionListener(this);
         sidePanel.cursive.addActionListener(this);
         sidePanel.underline.addActionListener(this);
+        sidePanel.numberedList.addActionListener(this);
+        sidePanel.bulletList.addActionListener(this);
         sidePanel.help.addActionListener(this);
 
         this.setTitle("Texti - the worlds best word processor!");
@@ -78,6 +80,7 @@ public class RenderView extends JFrame implements ActionListener {
         // this.add(scrollbar);
         this.setJMenuBar(mb);
         this.add(sp, BorderLayout.BEFORE_LINE_BEGINS);
+
         this.pack();
         this.setVisible(true);
         this.setBounds(10,10,width,height);
@@ -170,22 +173,15 @@ public class RenderView extends JFrame implements ActionListener {
         //Sidepanel
         else if (action.equals("B")){
             contr.bold();
-            sidePanel.press(sidePanel.bold);
+            //sidePanel.press(sidePanel.bold);
         }else if (action.equals("C")){
             contr.cursive();
-            sidePanel.press(sidePanel.cursive);
         }else if (action.equals("U")){
             contr.doUnderline();
-            sidePanel.press(sidePanel.underline);
         }else if (action.equals("H")){
-            //contr.highLight();
-            sidePanel.press(sidePanel.high);
         }else if (action.equals("*")){
             contr.createList();
-            sidePanel.press(sidePanel.bulletList);
         }else if (action.equals("1.")){
-            contr.insertImg(ta);
-            sidePanel.press(sidePanel.numberedList);
         }else if (action.equals("Help")){
             contr.help();
         }
@@ -197,7 +193,6 @@ public class RenderView extends JFrame implements ActionListener {
         }else if (action.equals("Right")){
             contr.setAlignment("right");
         }
-
     }
     public void newTA(){
         if(ta == null) {
@@ -210,5 +205,4 @@ public class RenderView extends JFrame implements ActionListener {
             ta.setText("");
         }
     }
-
 }

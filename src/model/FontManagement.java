@@ -6,13 +6,12 @@ import java.awt.*;
 
 public class FontManagement {
     JTextPane ta;
-Font font = new Font(null);
+    Font font = new Font(null);
     int mode=0;
     Color color = Color.BLACK;
     MutableAttributeSet attributeSet= new SimpleAttributeSet();
 
     public String getSelectedText () {
-
         Caret caret = ta.getCaret();
         if (caret == null) {
             // No caret => no selected text
@@ -22,7 +21,6 @@ Font font = new Font(null);
         if (s == null) {
             return null;
         }
-
         return s;
     }
 
@@ -31,21 +29,19 @@ Font font = new Font(null);
         this.ta=ta;
     }
     public void bold(){
-
         Boolean m = StyleConstants.isBold(attributeSet);
         StyleConstants.setBold(attributeSet, !m);
         System.out.println(m);
         ta.setCharacterAttributes(attributeSet, true);
-
     }
 
     public void cursive(){
-
         Boolean m = StyleConstants.isItalic(attributeSet);
         StyleConstants.setItalic(attributeSet, !m);
         System.out.println(m);
         ta.setCharacterAttributes(attributeSet, true);
     }
+
     public void size(int sz){
         StyleConstants.setFontSize(attributeSet, sz);
         ta.setCharacterAttributes(attributeSet, true);
