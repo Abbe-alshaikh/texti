@@ -1,4 +1,4 @@
-    os: osx
+    os: linux
     language: java
   packages: [ 'libstdjava-5-dev', 'apport', 'gdb' ]
   script_default: &build_and_publish
