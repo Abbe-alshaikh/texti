@@ -1,15 +1,1 @@
 mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-install: true
-script: ./mvnw clean install
-cache:
-  directories:
-  - $HOME/.m2
-  deploy:
-  -
-    on:
-      branch: release
-    provider: bintray
-    skip_cleanup: true
-    file: target/bin/bintray.json
-    user: nfrankel
-    key: $BINTRAY_API_KEY
