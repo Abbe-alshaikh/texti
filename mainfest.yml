@@ -1,5 +1,5 @@
 applications:
- - name: GetStartedJava
+ - name: Texti
    random-route: true
    path: target/Texti.war
    memory: 256M
