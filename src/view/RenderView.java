@@ -4,7 +4,8 @@ import model.SidePanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class RenderView extends JFrame implements ActionListener {
@@ -36,6 +37,10 @@ public class RenderView extends JFrame implements ActionListener {
         menu.underline.addActionListener(this);
         menu.saveItem.addActionListener(this);
         menu.openItem.addActionListener(this);
+        menu.copy.addActionListener(this);
+        menu.paste.addActionListener(this);
+        menu.cut.addActionListener(this);
+
         menu.cursive.addActionListener(this);
         menu.export.addActionListener(this);
         //image,picture actionListener
@@ -197,8 +202,18 @@ public class RenderView extends JFrame implements ActionListener {
             contr.setAlignment("center");
         }else if (action.equals("Right")){
             contr.setAlignment("right");
-        } else if (action.equals("Highlighting")) {
+        }
+
+        else if (action.equals("Highlighting")) {
             contr.highlighting();
+        }
+
+        else if (action.equals("Cut")) {
+            contr.cut();
+        }else if (action.equals("Copy")){
+            contr.copy();
+        }else if (action.equals("Paste")){
+            contr.paste();
         }
     }
     public void newTA(){

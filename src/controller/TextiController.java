@@ -3,7 +3,6 @@ import integration.ImgHandler;
 import model.*;
 
 import javax.swing.*;
-import javax.swing.text.BadLocationException;
 import java.io.IOException;
 
 public class TextiController extends JFrame {
@@ -62,7 +61,11 @@ public class TextiController extends JFrame {
         fontm.size(size);
     }
     public void highlighting ()  {
+
             fontm.highlighting();
+    }
+    public void copy (){
+        fontm.copy();
     }
     public void doUnderline(){
         fontm.doUnderline();
@@ -74,5 +77,14 @@ public class TextiController extends JFrame {
 
     public void setAlignment(String placement) {
         fontm.setAlignment(placement);
+    }
+
+    public void paste() {
+
+        fontm.paste();
+    }
+
+    public void cut() {
+        fontm.cut();
     }
 }
