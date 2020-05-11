@@ -63,7 +63,7 @@ public class RenderView extends JFrame implements ActionListener {
         menu.colors.addActionListener(this);
         //menu.colors.setPrototypeDisplayValue("Orange");
 
-        //Actrion listner for highlighiting
+        //Action listener for highlighting
         menu.highlighting.addActionListener(this);
         //Action listeners for Side Panel
         sidePanel.bold.addActionListener(this);
@@ -131,16 +131,16 @@ public class RenderView extends JFrame implements ActionListener {
             contr.doUnderline();
             sidePanel.press(sidePanel.underline);
         } else if(action.equals("Serif")){
-            fName= "Serif".toString();
+            fName= "Serif";
             contr.setFont(fName);
         }else if(action.equals("Monospaced")){
-            fName= "Monospaced".toString();
+            fName= "Monospaced";
             contr.setFont(fName);
         }else if(action.equals("SansSerif")){
-             fName= "SansSerif".toString();
+             fName= "SansSerif";
             contr.setFont(fName);
         }else if(action.equals("Cantarell")){
-            fName= "Cantarell".toString();
+            fName= "Cantarell";
             contr.setFont(fName);
         }
         else if(action.equals("8")){
