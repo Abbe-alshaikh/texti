@@ -181,6 +181,7 @@ public class RenderView extends JFrame implements ActionListener {
         }else if (action.equals("U")){
             contr.doUnderline();
         }else if (action.equals("H")){
+            contr.highlighting();
         }else if (action.equals("*")){
             contr.createList();
         }else if (action.equals("1.")){
