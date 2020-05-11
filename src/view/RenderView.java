@@ -20,7 +20,7 @@ public class RenderView extends JFrame implements ActionListener {
     Font bold, plain;
     public RenderView(TextiController contr){
         this.contr=contr;
-        menu = new Menu(contr);
+        menu = new Menu(/*contr*/);
         sidePanel = new SidePanel(/*contr*/);
         userInterface(menu, sidePanel);
       //menu.setVisible(true);
@@ -61,6 +61,8 @@ public class RenderView extends JFrame implements ActionListener {
         menu.sansserif.addActionListener(this);
         //colors action-listener
         menu.colors.addActionListener(this);
+        menu.help2.addActionListener(this);
+
         //menu.colors.setPrototypeDisplayValue("Orange");
 
         //Action listener for highlighting

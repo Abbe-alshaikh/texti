@@ -1,8 +1,5 @@
 package model;
 
-import controller.TextiController;
-
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
@@ -12,19 +9,14 @@ import java.awt.*;
  * This creates the sidepanel of the app
  */
 public class SidePanel extends JFrame {
-    //private TextiController contr;
     private JPanel sidePanel;
     public JToggleButton bold, high, cursive, underline, bulletList, numberedList;
     public JButton help;
 
-
-
     /**
-     * gives the sidePanel the controller
-     * @param contr
+     * Constructor of sidepanel which also renders it.
      */
-    public SidePanel(/*TextiController contr*/) {
-        //this.contr = contr;
+    public SidePanel() {
         render();
     }
 
@@ -34,7 +26,6 @@ public class SidePanel extends JFrame {
 
         sidePanel = new JPanel();
 
-        //bold = new JButton("B");
         bold = new JToggleButton("B");
         high = new JToggleButton("H");
         cursive = new JToggleButton("C");
@@ -71,6 +62,11 @@ public class SidePanel extends JFrame {
         sidePanel.setPreferredSize(new Dimension(100,40));
     }
 
+    /**
+     * Function called from controller to press or depress buttons manually
+     * for visual effects.
+     * @param button the button to be changed
+     */
     public void press(JToggleButton button){
         if(button.getModel().isSelected()){
             button.getModel().setSelected(false);
@@ -81,7 +77,6 @@ public class SidePanel extends JFrame {
     }
 
     /**
-     *
      * @return sidePanel
      */
     public JPanel getSidePanel(){

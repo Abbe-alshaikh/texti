@@ -3,15 +3,20 @@ package model;
 import javax.swing.*;
 import java.io.*;
 
+/**
+ * Class to save the whole JTextPane as an object to a file.
+ */
 public class WriteFile {
-    String formattedText;
 
-    public void save(JTextPane ta) throws IOException {
+    /**
+     * The save function.
+     * @param ta JTextPane to be saved
+     * @throws IOException
+     */
+    public void save(JTextPane ta) throws IOException, NullPointerException {
         if(ta.getText().length() > 0){
             JFileChooser chooser = new JFileChooser();
             chooser.setMultiSelectionEnabled(true);
-            //FileNameExtensionFilter filter = new FileNameExtensionFilter("RICH TEXT FORMAT", "rtf", "rtf");
-            //chooser.setFileFilter(filter);
 
             int option = chooser.showSaveDialog(null);
             String filePath = chooser.getSelectedFile().getPath();
@@ -20,6 +25,7 @@ public class WriteFile {
                 FileOutputStream fos = new FileOutputStream(filePath);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(ta);
+                System.out.println("Saved");
                 oos.flush();
                 oos.close();
 

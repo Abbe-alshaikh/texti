@@ -17,10 +17,10 @@ public class Menu extends JFrame{
     JMenuItem newItem, openItem, saveItem,saveAsItem,undo, redo, cut, copy, paste, spell_check,
             editWindow, fontWindow, picture, table, doBold, cursive, underline,
             highlighting, left, center, right, bullet_points, enumeration, fonts, s8, s10, s12, s14, s16, s18, s20,
-            cantarell, monospaced, sansserif, serif, export;
+            cantarell, monospaced, sansserif, serif, export, help2;
 
-    public Menu(TextiController contr){
-      this.contr=contr;
+    public Menu(/*TextiController contr*/){
+      //this.contr=contr;
       render();
     }
     String[] colorArr={"Black","Red", "Purple", "Orange",  "Blue", "Green", "Yellow"};
@@ -56,7 +56,7 @@ public class Menu extends JFrame{
         menuBar.add(print);
         menuBar.add(fonts);
 
-        //add font options to sckroll-down menu Fonts
+        //add font options to scroll-down menu Fonts
         serif = new JMenuItem("Serif");
         monospaced = new JMenuItem("Monospaced");
         sansserif = new JMenuItem("SansSerif");
@@ -156,6 +156,9 @@ public class Menu extends JFrame{
 
         fonts = new JMenuItem("Fonts");
         formatting.add(fonts);
+
+        help2 = new JMenuItem("Help");
+        help.add(help2);
 
     }
    //public void openFile(){

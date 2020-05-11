@@ -2,19 +2,27 @@ package model;
 
 import javax.swing.*;
 import java.io.*;
-import javax.swing.text.StyledDocument;
-import javax.swing.text.html.HTML;
-import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.HTMLEditorKit;
-public class ReadFile {
 
+/**
+ * Class to open an object of JTextPane.
+ */
+public class ReadFile {
     JTextPane ta;
 
+    /**
+     * Creates a new JTextPane
+     * @return the JTextPane
+     */
     public JTextPane openNewFile(){
-
         return new JTextPane();
     }
 
+    /**
+     * Opens a JTextPane from a saved file.
+     * @return the textpane
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public JTextPane doOpen() throws IOException, ClassNotFoundException {
         JFileChooser chooser = new JFileChooser("c:");
         int r = chooser.showOpenDialog(null);
