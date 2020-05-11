@@ -62,11 +62,7 @@ public class TextiController extends JFrame {
         fontm.size(size);
     }
     public void highlighting ()  {
-        try {
             fontm.highlighting();
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
     }
     public void doUnderline(){
         fontm.doUnderline();
