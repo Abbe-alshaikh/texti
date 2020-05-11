@@ -131,30 +131,19 @@ public class FontManagement {
         String text = getSelectedText();
     }
 
-    public void highlighting () throws BadLocationException {
+    public void highlighting () {
 
-
-        Highlighter.HighlightPainter whitePaint =
-                new DefaultHighlighter.DefaultHighlightPainter(Color.white);
-
-        int pos1 = ta.getCaretPosition();
-        int pos2 = ta.getCaret().getMark();
-
-        if (pos2 < pos1){
-            int temp= pos2;
-            pos2 = pos1;
-           pos1 = temp;
-
-            }
-
-            try {
-             ta.getHighlighter().addHighlight( pos1, pos2, redPaint);
-                for (Highlighter.Highlight highlight : ta.getHighlighter().getHighlights()) {
-                    System.out.println(highlight.toString());
-                }
-            } catch (BadLocationException e1){
-                System.out.println("highlight Error"+ pos1 + "    "+pos2);;
+            boolean highligtColor=StyleConstants.getBackground(attributeSet).equals(Color.RED);
+            if (highligtColor){
+                StyleConstants.setBackground(attributeSet, Color.white);
+                ta.setCharacterAttributes(attributeSet, true);
+                System.out.println("changed color");
+            }else {
+                StyleConstants.setBackground(attributeSet, Color.red);
+                ta.setCharacterAttributes(attributeSet, true);
             }
         }
+
+
     }
 
