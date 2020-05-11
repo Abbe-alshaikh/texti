@@ -125,7 +125,21 @@ public class FontManagement {
                 StyleConstants.TabSet, tabSet);
         ta.setParagraphAttributes(aset, false);
         String text = getSelectedText();
-
-
     }
-}
+
+    public void highlighting () throws BadLocationException {
+
+        Highlighter.HighlightPainter redPaint = new DefaultHighlighter.DefaultHighlightPainter(Color.red);
+
+        int pos1 = ta.getCaretPosition();
+        int pos2 = ta.getCaret().getMark();
+
+            try {
+                ta.getHighlighter().removeAllHighlights();
+                ta.getHighlighter().addHighlight(pos1, pos2, redPaint);
+            } catch (BadLocationException e1){
+                return;
+            }
+        }
+    }
+

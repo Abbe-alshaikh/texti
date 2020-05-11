@@ -63,6 +63,8 @@ public class RenderView extends JFrame implements ActionListener {
         menu.colors.addActionListener(this);
         //menu.colors.setPrototypeDisplayValue("Orange");
 
+        //Actrion listner for highlighiting
+        menu.highlighting.addActionListener(this);
         //Action listeners for Side Panel
         sidePanel.bold.addActionListener(this);
         sidePanel.high.addActionListener(this);
@@ -192,6 +194,8 @@ public class RenderView extends JFrame implements ActionListener {
             contr.setAlignment("center");
         }else if (action.equals("Right")){
             contr.setAlignment("right");
+        } else if (action.equals("Highlighting")) {
+            contr.highlighting();
         }
     }
     public void newTA(){

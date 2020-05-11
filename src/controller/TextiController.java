@@ -1,12 +1,10 @@
 package controller;
 import integration.ImgHandler;
-import model.FontManagement;
+import model.*;
 
 import javax.swing.*;
-import java.awt.*;
+import javax.swing.text.BadLocationException;
 import java.io.IOException;
-
-import model.*;
 
 public class TextiController extends JFrame {
     JTextPane ta;
@@ -62,6 +60,13 @@ public class TextiController extends JFrame {
     }
     public void setSize(int size){
         fontm.size(size);
+    }
+    public void highlighting ()  {
+        try {
+            fontm.highlighting();
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
     }
     public void doUnderline(){
         fontm.doUnderline();
