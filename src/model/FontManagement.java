@@ -10,6 +10,9 @@ public class FontManagement {
     int mode=0;
     Color color = Color.BLACK;
     MutableAttributeSet attributeSet= new SimpleAttributeSet();
+    Object tag = null;
+    Highlighter.HighlightPainter redPaint =
+            new DefaultHighlighter.DefaultHighlightPainter(Color.red);
 
     public String getSelectedText () {
         Caret caret = ta.getCaret();
@@ -107,7 +110,8 @@ public class FontManagement {
             StyleConstants.setAlignment(attributeSet, plc);
             ta.setCharacterAttributes(attributeSet, true);
             if (pos>pos2) {
-                doc.setParagraphAttributes(pos - text.length(), text.length(), attributeSet, false);
+                doc.setParagraphAttributes(pos - text.length(), text.length(),
+                                                            attributeSet, false);
             }else{
                 doc.setParagraphAttributes(pos, text.length(), attributeSet, false);
             }
@@ -129,16 +133,27 @@ public class FontManagement {
 
     public void highlighting () throws BadLocationException {
 
-        Highlighter.HighlightPainter redPaint = new DefaultHighlighter.DefaultHighlightPainter(Color.red);
+
+        Highlighter.HighlightPainter whitePaint =
+                new DefaultHighlighter.DefaultHighlightPainter(Color.white);
 
         int pos1 = ta.getCaretPosition();
         int pos2 = ta.getCaret().getMark();
 
+        if (pos2 < pos1){
+            int temp= pos2;
+            pos2 = pos1;
+           pos1 = temp;
+
+            }
+
             try {
-                ta.getHighlighter().removeAllHighlights();
-                ta.getHighlighter().addHighlight(pos1, pos2, redPaint);
+             ta.getHighlighter().addHighlight( pos1, pos2, redPaint);
+                for (Highlighter.Highlight highlight : ta.getHighlighter().getHighlights()) {
+                    System.out.println(highlight.toString());
+                }
             } catch (BadLocationException e1){
-                return;
+                System.out.println("highlight Error"+ pos1 + "    "+pos2);;
             }
         }
     }
