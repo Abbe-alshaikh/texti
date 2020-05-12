@@ -21,10 +21,9 @@ public class RenderView extends JFrame implements ActionListener {
     Font bold, plain;
     public RenderView(TextiController contr){
         this.contr=contr;
-        menu = new Menu(/*contr*/);
-        sidePanel = new SidePanel(/*contr*/);
+        menu = new Menu();
+        sidePanel = new SidePanel();
         userInterface(menu, sidePanel);
-      //menu.setVisible(true);
     }
 
     private void userInterface(Menu menu, SidePanel sidePanel){
@@ -103,9 +102,7 @@ public class RenderView extends JFrame implements ActionListener {
 
     }
 
-    //void renderTV(tv){
-        //render textview
-    //}
+
     public void actionPerformed(ActionEvent e){
         String action = e.getActionCommand();
 

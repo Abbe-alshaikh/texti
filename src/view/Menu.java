@@ -19,8 +19,8 @@ public class Menu extends JFrame{
             highlighting, left, center, right, bullet_points, enumeration, fonts, s8, s10, s12, s14, s16, s18, s20,
             cantarell, monospaced, sansserif, serif, export, help2;
 
-    public Menu(/*TextiController contr*/){
-      //this.contr=contr;
+    public Menu(){
+
       render();
     }
     String[] colorArr={"Black","Red", "Purple", "Orange",  "Blue", "Green", "Yellow"};
