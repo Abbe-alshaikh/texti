@@ -8,19 +8,26 @@ public class FontManagement {
     JTextPane ta;
     Font font = new Font(null);
     int mode=0;
+
     Color color = Color.BLACK;
-    MutableAttributeSet attributeSet= new SimpleAttributeSet();
+    private MutableAttributeSet attributeSet= new SimpleAttributeSet();
     Object tag = null;
     Highlighter.HighlightPainter redPaint =
             new DefaultHighlighter.DefaultHighlightPainter(Color.red);
 
+    /**
+     * Returns a String, a copy of test that the user selects/"marks" with the mouse
+     * That text can be manipulated in different ways, it could be higlighted, set to bold etc.
+     * We are making use of a caret object to get the start and end positions of the selected text.
+     * If there is no text selected the caret will be set to null which is what will be returned.
+     * @return string copy of text a user selects
+     */
     public String getSelectedText () {
         Caret caret = ta.getCaret();
         if (caret == null) {
-            // No caret => no selected text
             return null;
         }
-        String s = ta.getSelectedText ();
+        String s = ta.getSelectedText();
         if (s == null) {
             return null;
         }
@@ -29,10 +36,12 @@ public class FontManagement {
 
 
     public void setTextPane(JTextPane ta){
+
         this.ta=ta;
     }
+
     public void bold(){
-        Boolean m = StyleConstants.isBold(attributeSet);
+        Boolean  m = StyleConstants.isBold(attributeSet);
         StyleConstants.setBold(attributeSet, !m);
         System.out.println(m);
         ta.setCharacterAttributes(attributeSet, true);
@@ -142,6 +151,10 @@ public class FontManagement {
                 StyleConstants.setBackground(attributeSet, Color.red);
                 ta.setCharacterAttributes(attributeSet, true);
             }
+        }
+
+        public MutableAttributeSet getAttributeSet(){
+        return attributeSet;
         }
 
 

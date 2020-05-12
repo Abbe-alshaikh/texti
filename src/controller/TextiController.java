@@ -26,10 +26,12 @@ public class TextiController extends JFrame {
         fontm.bold();
     }
     public void cursive(){
+
         fontm.cursive();
     }
     //controlling fonts
     public void setFont(String font){
+
         fontm.setFont(font);
     }
 
@@ -54,7 +56,8 @@ public class TextiController extends JFrame {
     public void createList(){
         fontm.createList();
     }
-    public void insertImg(JTextPane ta){
+    public void insertImg(JTextPane ta)
+    {
         imgHandler.insertImg(ta);
     }
     public void setSize(int size){

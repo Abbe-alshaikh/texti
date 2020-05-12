@@ -29,8 +29,6 @@ public class ImgHandler {
 
         }
 
-
-
     }
 
     private boolean isImage(File f){
