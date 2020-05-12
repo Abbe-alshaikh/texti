@@ -24,6 +24,7 @@ public class TextiController extends JFrame {
 
     public void bold(){
         fontm.bold();
+        System.out.println("bold in controller");
     }
     public void cursive(){
 
