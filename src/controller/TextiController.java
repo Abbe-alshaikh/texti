@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class TextiController extends JFrame {
     JTextPane ta;
-    ReadFile o = new ReadFile();
+    ReadFile rf = new ReadFile();
     FontManagement fontm= new FontManagement();
     ImgHandler imgHandler;
 
@@ -15,9 +15,9 @@ public class TextiController extends JFrame {
         this.imgHandler=imgHdlr;
     }
 
-    //vi flyttar skapandet av ta till modellen och det returneras här tbx till vyn
+    //vi flyttar skapandet av ta till modellen och det returneras här tillbaka till vyn
     public JTextPane openNewFile(){
-        ta = o.openNewFile();
+        ta = rf.openNewFile();
         fontm.setTextPane(ta);
         return ta;
     }
@@ -27,12 +27,10 @@ public class TextiController extends JFrame {
         System.out.println("bold in controller");
     }
     public void cursive(){
-
         fontm.cursive();
     }
     //controlling fonts
     public void setFont(String font){
-
         fontm.setFont(font);
     }
 
@@ -45,7 +43,7 @@ public class TextiController extends JFrame {
         sc.save(ta);
     }
     public JTextPane doOpen() throws IOException, ClassNotFoundException {
-        ta = o.doOpen();
+        ta = rf.doOpen();
         fontm.setTextPane(ta);
         return ta;
     }
@@ -65,7 +63,6 @@ public class TextiController extends JFrame {
         fontm.size(size);
     }
     public void highlighting ()  {
-
             fontm.highlighting();
     }
     public void copy (){
@@ -84,7 +81,6 @@ public class TextiController extends JFrame {
     }
 
     public void paste() {
-
         fontm.paste();
     }
 

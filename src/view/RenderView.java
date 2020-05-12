@@ -118,11 +118,14 @@ public class RenderView extends JFrame implements ActionListener {
                 ex.printStackTrace();
             }
         }else if(action.equals("Open")) {
+            JTextPane tempPane = ta;
             try {
+                //this.remove(ta);
                 this.ta = contr.doOpen();
             } catch (IOException | ClassNotFoundException ex) {
                 ex.printStackTrace();
             }
+            this.remove(tempPane);
             scrollbar = new JScrollPane((ta));
             this.add(ta);
             this.setVisible(true);
@@ -213,6 +216,10 @@ public class RenderView extends JFrame implements ActionListener {
             contr.paste();
         }
     }
+
+    /**
+     * Creates a new text area (JTextPane)
+     */
     public void newTA(){
         if(ta == null) {
             ta = contr.openNewFile();

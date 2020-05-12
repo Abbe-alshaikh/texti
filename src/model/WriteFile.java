@@ -7,13 +7,14 @@ import java.io.*;
  * Class to save the whole JTextPane as an object to a file.
  */
 public class WriteFile {
+    String formattedText;
 
     /**
      * The save function.
      * @param ta JTextPane to be saved
      * @throws IOException
      */
-    public void save(JTextPane ta) throws IOException, NullPointerException {
+    public void save(JTextPane ta) throws IOException {
         if(ta.getText().length() > 0){
             JFileChooser chooser = new JFileChooser();
             chooser.setMultiSelectionEnabled(true);

@@ -27,7 +27,6 @@ public class ImgHandler {
                                 "please retry with the right file-type", "wrong file-type",
                         JOptionPane.ERROR_MESSAGE);
             }
-
         }
 
     }

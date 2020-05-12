@@ -8,7 +8,10 @@ import javax.swing.text.html.HTMLEditorKit;
 import java.io.*;
 
 public class SaveContent {
-
+    /**
+     * This class export the text pane to a .rtf-file
+     * @param text to be exported
+     */
     public void save(JTextPane text){
         if(text.getText().length() > 0){
             JFileChooser chooser = new JFileChooser();

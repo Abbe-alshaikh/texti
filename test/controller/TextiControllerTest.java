@@ -1,6 +1,7 @@
 package controller;
 
 import integration.ImgHandler;
+import model.ReadFile;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import javax.swing.text.StyleConstants;
 
 import java.awt.*;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,11 +89,15 @@ private JTextPane ta;
 
     @Test
     void openNewFile() {
+        ta = null;
+        ReadFile rf = new ReadFile();
+        ta = rf.openNewFile();
+        assertNotNull(ta);
     }
-
 
     @Test
     void doSave() {
+
     }
 
     @Test
@@ -99,7 +105,12 @@ private JTextPane ta;
     }
 
     @Test
-    void doOpen() {
+    void doOpen() throws IOException, ClassNotFoundException {
+        ta = null;
+        ReadFile rf = new ReadFile();
+        ta = rf.doOpen();
+        assertNotNull(ta);
+
     }
 
 
