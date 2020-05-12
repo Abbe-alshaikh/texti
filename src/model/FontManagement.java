@@ -78,7 +78,7 @@ public class FontManagement {
             color = Color.BLUE;
         } if(selectedColor.equals("Green")){
             color = Color.GREEN;
-        } if(selectedColor.equals("Purpdle")){
+        } if(selectedColor.equals("Purple")){
             color = Color.MAGENTA;
         } if(selectedColor.equals("Orange")){
             color = Color.ORANGE;
@@ -187,7 +187,11 @@ public class FontManagement {
 
     */
         public MutableAttributeSet getAttributeSet(){
-        return attributeSet;
+                return attributeSet;
+        }
+
+        public Color getColor(){
+            return color;
         }
 
 
