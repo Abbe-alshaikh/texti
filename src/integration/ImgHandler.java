@@ -8,7 +8,7 @@ public class ImgHandler {
     public void insertImg(JTextPane ta){
        // String path="";
         JFileChooser fileChooser=new JFileChooser("c:");
-
+        System.out.println("c:");
         int openDialog=fileChooser.showOpenDialog(ta);
 
         if(openDialog==JFileChooser.APPROVE_OPTION){
@@ -21,6 +21,7 @@ public class ImgHandler {
                 ta.insertIcon(imageIcon);
             }
             else{
+                System.out.println("c:");
                 JOptionPane.showMessageDialog(ta,
                         "you have selected a file that is not an image-file" +
                                 "please retry with the right file-type", "wrong file-type",

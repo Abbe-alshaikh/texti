@@ -31,7 +31,6 @@ public class FontManagement {
     public String getSelectedText () {
         Caret caret = ta.getCaret();
         if (caret == null) {
-            // No caret => no selected text
             return null;
         }
         String s = ta.getSelectedText ();
