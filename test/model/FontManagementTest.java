@@ -17,14 +17,14 @@ class FontManagementTest {
  private FontManagement fontManagement;
 
     @BeforeEach
-    void instantiate(){
+    void setUp(){
         ta = new JTextPane();
         fontManagement= new FontManagement();
         fontManagement.setTextPane(ta);
 
     }
     @AfterEach
-    void reset(){
+    void tearDown(){
         ta = null;
         fontManagement = null;
     }
@@ -43,6 +43,12 @@ class FontManagementTest {
             e.printStackTrace();
         }
 
+    }
+
+    @Test
+    void setTextPaneTest(){
+        JTextPane testPane = new JTextPane();
+        assertNotEquals(testPane, ta);
     }
 
     @Test
