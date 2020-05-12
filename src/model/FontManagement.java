@@ -2,18 +2,24 @@ package model;
 
 import javax.swing.*;
 import javax.swing.text.*;
+import javax.swing.undo.UndoManager;
 import java.awt.*;
 
 public class FontManagement {
     JTextPane ta;
     Font font = new Font(null);
-    int mode=0;
-
     Color color = Color.BLACK;
-    private MutableAttributeSet attributeSet= new SimpleAttributeSet();
+    MutableAttributeSet attributeSet= new SimpleAttributeSet();
     Object tag = null;
     Highlighter.HighlightPainter redPaint =
             new DefaultHighlighter.DefaultHighlightPainter(Color.red);
+    String val1;
+    UndoManager undoManager = new UndoManager();
+    // Set Undo-Redo limit upto 10
+
+
+    public FontManagement() {
+    }
 
     /**
      * Returns a String, a copy of test that the user selects/"marks" with the mouse
@@ -25,9 +31,10 @@ public class FontManagement {
     public String getSelectedText () {
         Caret caret = ta.getCaret();
         if (caret == null) {
+            // No caret => no selected text
             return null;
         }
-        String s = ta.getSelectedText();
+        String s = ta.getSelectedText ();
         if (s == null) {
             return null;
         }
@@ -36,12 +43,10 @@ public class FontManagement {
 
 
     public void setTextPane(JTextPane ta){
-
         this.ta=ta;
     }
-
     public void bold(){
-        Boolean  m = StyleConstants.isBold(attributeSet);
+        Boolean m = StyleConstants.isBold(attributeSet);
         StyleConstants.setBold(attributeSet, !m);
         System.out.println(m);
         ta.setCharacterAttributes(attributeSet, true);
@@ -152,7 +157,35 @@ public class FontManagement {
                 ta.setCharacterAttributes(attributeSet, true);
             }
         }
+    public void copy (){
+           ta.copy();
+        }
+    public void paste (){
+        ta.paste();
+        }
 
+    public void cut() {
+        ta.cut();
+    }
+   /* public void undo () {
+        ta.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
+                .put(undoKeyStroke, "undoKeyStroke");
+        ta.getActionMap().put("undoKeyStroke", new AbstractAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    undoManager.undo();
+                } catch (CannotUndoException cue) {}
+            }
+        });
+
+    }
+    public void redo () {
+
+    }
+
+    */
         public MutableAttributeSet getAttributeSet(){
         return attributeSet;
         }
