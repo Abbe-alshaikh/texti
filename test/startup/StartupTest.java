@@ -1,24 +1,21 @@
-package model;
+package startup;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SaveContentTest {
-    SaveContent sc;
+class StartupTest {
+    private Startup instanceToTest;
     private ByteArrayOutputStream printoutBuffer;
     private PrintStream originalSysOut;
 
     @BeforeEach
     void setUp() {
-        sc = new SaveContent();
-
         printoutBuffer = new ByteArrayOutputStream();
         PrintStream inMemSysOut = new PrintStream(printoutBuffer);
         originalSysOut = System.out;
@@ -27,19 +24,18 @@ class SaveContentTest {
 
     @AfterEach
     void tearDown() {
-        sc = null;
-
+        instanceToTest = null;
         printoutBuffer = null;
+
         System.setOut(originalSysOut);
     }
 
     @Test
-    void save() {
-        JTextPane ta = new JTextPane();
-        sc.save(ta);
-
+    void main() {
+        String[] args = null;
+        Startup.main(args);
         String printout = printoutBuffer.toString();
-        String expectedOutput = "Nothing to Export";
-        assertTrue(printout.contains(expectedOutput), "Cancelling Export wrong");
+        String expectedOutput = "Program started";
+        assertTrue(printout.contains(expectedOutput), "Program did not start correctly.");
     }
 }

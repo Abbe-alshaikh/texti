@@ -2,7 +2,10 @@ package view;
 
 import controller.TextiController;
 import integration.ImgHandler;
+import model.SidePanel;
 import org.junit.jupiter.api.Test;
+
+import javax.swing.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +23,11 @@ class RenderViewTest {
     }
 
     @Test
-    void newTA() {
-
+    void checkConstructor(){
+        ImgHandler imgHdlr = new ImgHandler();
+        TextiController contr = new TextiController(imgHdlr);
+        RenderView rw = new RenderView(contr);
+        assertNotNull(rw.menu);
+        assertNotNull(rw.sidePanel);
     }
 }

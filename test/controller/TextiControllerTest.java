@@ -2,6 +2,8 @@ package controller;
 
 import integration.ImgHandler;
 import model.ReadFile;
+import model.SaveContent;
+import model.WriteFile;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,11 +23,19 @@ class TextiControllerTest {
 private TextiController contr;
 private JTextPane ta;
 
+    private ByteArrayOutputStream printoutBuffer;
+    private PrintStream originalSysOut;
+
     @BeforeEach
     void setUp() {
          contr = new TextiController(new ImgHandler());
          ta = new JTextPane();
          contr.fontm.setTextPane(ta);
+
+        printoutBuffer = new ByteArrayOutputStream();
+        PrintStream inMemSysOut = new PrintStream(printoutBuffer);
+        originalSysOut = System.out;
+        System.setOut(inMemSysOut);
     }
 
     @AfterEach
@@ -33,6 +43,9 @@ private JTextPane ta;
 
         contr = null;
         ta=null;
+
+        printoutBuffer = null;
+        System.setOut(originalSysOut);
     }
 
     @Test
@@ -96,21 +109,34 @@ private JTextPane ta;
     }
 
     @Test
-    void doSave() {
+    void nothingToSave() throws IOException {
+        WriteFile wf = new WriteFile();
+        wf.save(ta);
 
+        String printout = printoutBuffer.toString();
+        String expectedOutput = "Nothing to save";
+        assertTrue(printout.contains(expectedOutput), "Cancelling save wrong");
     }
 
     @Test
     void export() {
+        SaveContent sc = new SaveContent();
+        sc.save(ta);
+
+        String printout = printoutBuffer.toString();
+        String expectedOutput = "Nothing to Export";
+        assertTrue(printout.contains(expectedOutput), "Cancelling Export wrong");
     }
 
     @Test
-    void doOpen() throws IOException, ClassNotFoundException {
-        ta = null;
+    void cancellingOpen() throws IOException, ClassNotFoundException {
         ReadFile rf = new ReadFile();
         ta = rf.doOpen();
-        assertNotNull(ta);
 
+        rf.doOpen();
+        String printout = printoutBuffer.toString();
+        String expectedOutput = "Open Cancelled";
+        assertTrue(printout.contains(expectedOutput), "Cancelling Open wrong");
     }
 
 

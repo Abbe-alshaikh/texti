@@ -13,8 +13,10 @@ public class Startup {
     public static void main(String args[]){
        // JFrame frame = new JFrame("wordrocessor, Texti");
         ImgHandler imgHandler=new ImgHandler();
-     TextiController contr = new TextiController(imgHandler);
-      RenderView rv = new RenderView(contr);
+        TextiController contr = new TextiController(imgHandler);
+        RenderView rv = new RenderView(contr);
+        System.out.println("Program started");
+
 
       //something to look into
       /* frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

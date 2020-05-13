@@ -9,10 +9,11 @@ import javax.swing.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MenuTest {
-private Menu menu;
+    private Menu menu;
+
     @Test
     void MenuTest(){
-         menu = new Menu();
+        menu = new Menu();
         assertNotEquals(null, menu);
         menu=null;
     }
