@@ -15,7 +15,7 @@ public class TextiController extends JFrame {
         this.imgHandler=imgHdlr;
     }
 
-    //vi flyttar skapandet av ta till modellen och det returneras här tillbaka till vyn
+    //vi flyttar skapandet av ta till modellen och det returneras här tbx till vyn
     public JTextPane openNewFile(){
         ta = rf.openNewFile();
         fontm.setTextPane(ta);
