@@ -8,6 +8,7 @@ import java.io.IOException;
 public class TextiController extends JFrame {
     JTextPane ta;
     ReadFile rf = new ReadFile();
+    PrintFile pf = new PrintFile();
     FontManagement fontm= new FontManagement();
     ImgHandler imgHandler;
 
@@ -78,6 +79,9 @@ public class TextiController extends JFrame {
 
     public void setAlignment(String placement) {
         fontm.setAlignment(placement);
+    }
+    public void printFile(JTextPane ta) {
+        pf.printSetup(ta);
     }
 
     public void paste() {

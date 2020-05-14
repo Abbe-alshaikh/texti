@@ -42,6 +42,7 @@ public class RenderView extends JFrame implements ActionListener {
 
         menu.cursive.addActionListener(this);
         menu.export.addActionListener(this);
+        menu.printer.addActionListener(this);
         //image,picture actionListener
         menu.picture.addActionListener(this);
         // Size action listeners
@@ -150,6 +151,7 @@ public class RenderView extends JFrame implements ActionListener {
             fName= "Cantarell";
             contr.setFont(fName);
         }
+        // Size
         else if(action.equals("8")){
             contr.setSize(8);
         }
@@ -207,6 +209,11 @@ public class RenderView extends JFrame implements ActionListener {
         else if (action.equals("Highlighting")) {
             contr.highlighting();
         }
+        //Print
+        else if (action.equals("print")){
+            contr.printFile(ta);
+        }
+
 
         else if (action.equals("Cut")) {
             contr.cut();
