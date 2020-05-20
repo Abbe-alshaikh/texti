@@ -21,16 +21,14 @@ public class RenderView extends JFrame implements ActionListener {
     Menu menu;
     SidePanel sidePanel;
     JTextPane ta;
-
     Font bold, plain;
     UndoManager manager = new UndoManager();
     public RenderView(TextiController contr){
         this.contr=contr;
-        menu = new Menu(/*contr*/);
-        sidePanel = new SidePanel(/*contr*/);
+        menu = new Menu();
+        sidePanel = new SidePanel();
         userInterface(menu, sidePanel);
-        //menu.setVisible(true);
-
+      //menu.setVisible(true);
     }
 
     private void userInterface(Menu menu, SidePanel sidePanel){
@@ -50,6 +48,7 @@ public class RenderView extends JFrame implements ActionListener {
         menu.redo.addActionListener(this);
         menu.cursive.addActionListener(this);
         menu.export.addActionListener(this);
+        menu.printer.addActionListener(this);
         //image,picture actionListener
         menu.picture.addActionListener(this);
         // Size action listeners
@@ -110,9 +109,7 @@ public class RenderView extends JFrame implements ActionListener {
 
     }
 
-    //void renderTV(tv){
-        //render textview
-    //}
+
     public void actionPerformed(ActionEvent e){
         String action = e.getActionCommand();
 
@@ -128,11 +125,14 @@ public class RenderView extends JFrame implements ActionListener {
                 ex.printStackTrace();
             }
         }else if(action.equals("Open")) {
+            JTextPane tempPane = ta;
             try {
+                //this.remove(ta);
                 this.ta = contr.doOpen();
             } catch (IOException | ClassNotFoundException ex) {
-                ex.printStackTrace();
+                //ex.printStackTrace();
             }
+            this.remove(tempPane);
             scrollbar = new JScrollPane((ta));
             this.add(ta);
             this.setVisible(true);
@@ -157,6 +157,7 @@ public class RenderView extends JFrame implements ActionListener {
             fName= "Cantarell";
             contr.setFont(fName);
         }
+        // Size
         else if(action.equals("8")){
             contr.setSize(8);
         }
@@ -226,9 +227,6 @@ public class RenderView extends JFrame implements ActionListener {
         }
 
     }
-    //public JTextArea getEditor() {
-    //    return ta;
-    //}
     public void newTA(){
         if(ta == null) {
             ta = contr.openNewFile();

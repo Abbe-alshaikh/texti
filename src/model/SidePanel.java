@@ -6,7 +6,7 @@ import javax.swing.border.CompoundBorder;
 import java.awt.*;
 
 /**
- * This creates the sidepanel of the app
+ * This creates the side panel of the app
  */
 public class SidePanel extends JFrame {
     private JPanel sidePanel;
@@ -14,7 +14,7 @@ public class SidePanel extends JFrame {
     public JButton help;
 
     /**
-     * Constructor of sidepanel which also renders it.
+     * Constructor of side panel which also renders it.
      */
     public SidePanel() {
         render();
