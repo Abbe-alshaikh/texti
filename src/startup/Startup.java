@@ -1,13 +1,8 @@
 package startup;
 
 import controller.TextiController;
-
 import integration.ImgHandler;
-import view.*;
 import view.RenderView;
-
-import javax.swing.*;
-import java.awt.*;
 
 public class Startup {
     public static void main(String args[]){
@@ -15,7 +10,6 @@ public class Startup {
         ImgHandler imgHandler=new ImgHandler();
      TextiController contr = new TextiController(imgHandler);
       RenderView rv = new RenderView(contr);
-
       //something to look into
       /* frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       frame.getContentPane().add(rv);

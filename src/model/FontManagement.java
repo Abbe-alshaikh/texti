@@ -1,9 +1,12 @@
 package model;
 
 import javax.swing.*;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 import javax.swing.text.*;
-import javax.swing.undo.UndoManager;
 import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 
 public class FontManagement {
     JTextPane ta;
@@ -14,8 +17,13 @@ public class FontManagement {
     Highlighter.HighlightPainter redPaint =
             new DefaultHighlighter.DefaultHighlightPainter(Color.red);
     String val1;
-    UndoManager undoManager = new UndoManager();
-    // Set Undo-Redo limit upto 10
+
+
+    private Document editorPaneDocument;
+
+
+     UndoHandler.UndoAction undoAction = null;
+     UndoHandler.RedoAction redoAction = null;
 
 
     public FontManagement() {
@@ -167,29 +175,39 @@ public class FontManagement {
     public void cut() {
         ta.cut();
     }
-   /* public void undo () {
-        ta.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
-                .put(undoKeyStroke, "undoKeyStroke");
-        ta.getActionMap().put("undoKeyStroke", new AbstractAction() {
+   public void undo () {
+       editorPaneDocument = ta.getDocument();
+        UndoHandler undoActionH = new UndoHandler();
+       editorPaneDocument.addUndoableEditListener(undoActionH);
+       KeyStroke undoKeystroke = KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK);
+
+       undoAction = new UndoHandler.UndoAction();
+       ta.getInputMap().put(undoKeystroke, "Undo");
+       ta.getActionMap().put("Undo", undoAction);
+    }
+
+    public void redo () {
+        System.out.println("redo FM");
+        editorPaneDocument = ta.getDocument();
+        editorPaneDocument.addUndoableEditListener(new UndoHandler());
+        KeyStroke redoKeystroke = KeyStroke.getKeyStroke(KeyEvent.VK_Z, InputEvent.CTRL_DOWN_MASK);
+
+        redoAction = new UndoHandler.RedoAction();
+        ta.getInputMap().put(redoKeystroke, "Redo");
+
+        ta.getActionMap().put("Redo", redoAction);
+        ta.addCaretListener(new CaretListener() {
 
             @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    undoManager.undo();
-                } catch (CannotUndoException cue) {}
+            public void caretUpdate(CaretEvent e) {
+
             }
         });
-
-    }
-    public void redo () {
-
     }
 
-    */
         public MutableAttributeSet getAttributeSet(){
         return attributeSet;
         }
-
 
     }
 

@@ -1,8 +1,10 @@
 package view;
+
 import controller.TextiController;
 import model.SidePanel;
 
 import javax.swing.*;
+import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +12,7 @@ import java.io.IOException;
 
 public class RenderView extends JFrame implements ActionListener {
     private JScrollPane scrollbar;
+
     private int width = 1200, height = 900;
     private JMenuBar mb;
     private JPanel sp;
@@ -18,13 +21,16 @@ public class RenderView extends JFrame implements ActionListener {
     Menu menu;
     SidePanel sidePanel;
     JTextPane ta;
+
     Font bold, plain;
+    UndoManager manager = new UndoManager();
     public RenderView(TextiController contr){
         this.contr=contr;
         menu = new Menu(/*contr*/);
         sidePanel = new SidePanel(/*contr*/);
         userInterface(menu, sidePanel);
-      //menu.setVisible(true);
+        //menu.setVisible(true);
+
     }
 
     private void userInterface(Menu menu, SidePanel sidePanel){
@@ -40,7 +46,8 @@ public class RenderView extends JFrame implements ActionListener {
         menu.copy.addActionListener(this);
         menu.paste.addActionListener(this);
         menu.cut.addActionListener(this);
-
+        menu.undo.addActionListener( this);
+        menu.redo.addActionListener(this);
         menu.cursive.addActionListener(this);
         menu.export.addActionListener(this);
         //image,picture actionListener
@@ -202,20 +209,26 @@ public class RenderView extends JFrame implements ActionListener {
             contr.setAlignment("center");
         }else if (action.equals("Right")){
             contr.setAlignment("right");
-        }
-
-        else if (action.equals("Highlighting")) {
+        }else if (action.equals("Highlighting")) {
             contr.highlighting();
-        }
-
-        else if (action.equals("Cut")) {
+        }else if (action.equals("Cut")) {
             contr.cut();
         }else if (action.equals("Copy")){
             contr.copy();
         }else if (action.equals("Paste")){
             contr.paste();
+        } else if (action.equals("Undo")){
+            System.out.println("Undo");
+                    contr.undo();
+        }else if (action.equals("Redo")){
+            System.out.println("redo");
+                    contr.redo();
         }
+
     }
+    //public JTextArea getEditor() {
+    //    return ta;
+    //}
     public void newTA(){
         if(ta == null) {
             ta = contr.openNewFile();

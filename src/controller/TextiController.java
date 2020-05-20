@@ -90,4 +90,14 @@ public class TextiController extends JFrame {
     public void cut() {
         fontm.cut();
     }
+
+    public void redo() {
+        fontm.redo ();
+    }
+
+    public void undo() {
+        fontm.undo ();
+    }
+
+
 }
