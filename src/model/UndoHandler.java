@@ -24,7 +24,6 @@ public class UndoHandler implements UndoableEditListener {
         redoAction.update();
     }
 
-
     /**
      * Messaged when the Document has created an edit, the edit is added to
      * <code>undoManager</code>, an instance of UndoManager.
