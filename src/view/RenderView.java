@@ -102,6 +102,7 @@ public class RenderView extends JFrame implements ActionListener {
         //this.show();
 
         //Lists
+        
         menu.bullet_points.addActionListener(this);
 
         //initiate with a new text-area
